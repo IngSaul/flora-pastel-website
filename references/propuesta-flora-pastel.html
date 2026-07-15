@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Flora Pastel — Propuesta de diseño</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Fraunces:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+
+:root{
+  --color-pink:#D6478A;
+  --color-pink-deep:#AD2F68;
+  --color-pink-soft:#F8E1EC;
+  --color-coffee:#8B5A3C;
+  --color-coffee-2:#6E4429;
+  --color-cream:#FBF6EE;
+  --color-white:#FFFFFF;
+  --color-black:#17140F;
+  --color-ink:#8B5A3C;
+  --color-ink-muted:#7C6A5C;
+  --color-ink-faint:#B3A392;
+  --color-border:#ECE0E7;
+  --color-whatsapp:#25D366;
+  --color-whatsapp-dark:#1DA851;
+
+  --font-word:'Fjalla One', sans-serif;
+  --font-display:'Fraunces', serif;
+  --font-body:'Manrope', sans-serif;
+
+  --radius-xs:3px; --radius-sm:8px; --radius-md:14px; --radius-lg:24px; --radius-full:999px;
+  --shadow-xs:0 1px 2px rgba(23,20,15,.06);
+  --shadow-sm:0 3px 12px rgba(23,20,15,.08);
+  --shadow-md:0 10px 28px rgba(23,20,15,.11);
+  --shadow-lg:0 24px 56px rgba(23,20,15,.18);
+  --space-5:24px; --space-6:32px; --space-7:48px; --space-8:64px; --space-9:96px;
+  --ease-premium:cubic-bezier(.16,1,.3,1);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--color-cream);color:var(--color-ink);font-family:var(--font-body);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;}
+img{max-width:100%;display:block;}
+a{color:inherit;}
+.icon{width:1em;height:1em;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}
+.container{max-width:1080px;margin:0 auto;padding:0 24px;}
+.doc-section{padding:var(--space-8) 0;}
+.doc-section.bg-soft{background:#F5EEE1;}
+h1,h2,h3{font-family:var(--font-display);font-weight:400;color:var(--color-ink);margin:0 0 .4em;letter-spacing:-.01em;}
+h1{font-size:clamp(2rem,4vw,3.1rem);line-height:1.08;}
+h2{font-size:clamp(1.6rem,2.4vw,2.1rem);line-height:1.15;}
+h3{font-size:1.15rem;line-height:1.3;font-weight:500;}
+p{margin:0 0 1em;color:var(--color-ink-muted);}
+.section-intro{max-width:640px;margin-bottom:var(--space-6);}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-pink-deep);margin:0 0 14px;}
+.num{font-family:var(--font-body);font-weight:700;font-size:13px;color:var(--color-cream);background:var(--color-coffee);width:32px;height:32px;border-radius:var(--radius-full);display:inline-flex;align-items:center;justify-content:center;margin-bottom:16px;}
+
+.logo-inline{display:inline-flex;align-items:center;gap:9px;}
+.logo-inline .flora-mark{width:24px;height:24px;color:var(--color-coffee);}
+.logo-inline .word{font-family:var(--font-word);font-size:17px;color:var(--color-coffee);}
+.logo-stack{display:flex;flex-direction:column;align-items:center;gap:10px;}
+.logo-stack .flora-mark{width:48px;height:48px;color:var(--color-coffee);}
+.logo-stack .word-block{text-align:center;border-top:1.5px solid currentColor;padding-top:8px;}
+.logo-stack .word{font-family:var(--font-word);font-size:28px;color:var(--color-coffee);}
+.logo-stack .sub{display:block;font-family:var(--font-body);font-weight:700;font-size:10px;letter-spacing:.4em;color:var(--color-pink-deep);margin-top:4px;padding-left:.4em;}
+
+.top-bar{position:sticky;top:0;z-index:50;background:rgba(251,246,238,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--color-border);}
+.top-bar .container{display:flex;align-items:center;justify-content:space-between;height:60px;gap:16px;}
+.top-bar .tag{font-size:11.5px;color:var(--color-ink-muted);}
+.top-bar a.switch{font-size:11.5px;font-weight:600;color:var(--color-pink-deep);text-decoration:underline;white-space:nowrap;}
+
+.cover{padding:var(--space-9) 0 var(--space-7);}
+.cover p.lead{max-width:600px;font-size:1.08rem;}
+.cover-meta{display:flex;gap:28px;flex-wrap:wrap;margin-top:24px;font-size:13px;color:var(--color-ink-muted);}
+.cover-meta strong{display:block;color:var(--color-ink);font-size:13.5px;margin-bottom:2px;}
+
+.ref-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:var(--space-6);}
+.ref-card{background:var(--color-white);border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm);border:1px solid var(--color-border);}
+.ref-card img{width:100%;height:170px;object-fit:cover;object-position:top;}
+.ref-card p{padding:12px 14px;font-size:12.5px;margin:0;color:var(--color-ink-muted);}
+
+.pill-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:var(--space-6);}
+.pill{background:var(--color-white);border:1px solid var(--color-border);border-radius:var(--radius-full);padding:10px 20px;font-size:13.5px;font-weight:600;box-shadow:var(--shadow-xs);}
+
+.swatch-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:var(--space-6);}
+.swatch{border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm);border:1px solid var(--color-border);background:var(--color-white);}
+.swatch-color{height:72px;}
+.swatch-label{padding:10px 12px;}
+.swatch-label b{display:block;font-size:12.5px;}
+.swatch-label span{display:block;font-size:11px;color:var(--color-ink-faint);font-family:monospace;margin-top:2px;}
+
+.type-card{background:var(--color-white);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:36px;margin-top:var(--space-6);box-shadow:var(--shadow-sm);}
+.type-row{padding:20px 0;border-bottom:1px dashed var(--color-border);}
+.type-row:last-child{border-bottom:none;padding-bottom:0;}
+.type-row:first-child{padding-top:0;}
+.type-row .lbl{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--color-pink-deep);font-weight:700;margin-bottom:10px;}
+.h1-sample{font-family:var(--font-display);font-size:40px;color:var(--color-ink);line-height:1.08;}
+.h1-sample em{font-style:italic;color:var(--color-pink-deep);}
+.body-sample{font-family:var(--font-body);font-size:17px;color:var(--color-ink-muted);max-width:480px;}
+
+.placeholder-note{display:flex;gap:16px;align-items:flex-start;background:var(--color-pink-soft);border:1px dashed var(--color-pink-deep);border-radius:var(--radius-md);padding:22px 26px;margin-top:var(--space-6);}
+.placeholder-note svg{width:24px;height:24px;flex-shrink:0;color:var(--color-pink-deep);margin-top:2px;}
+.placeholder-note b{display:block;font-family:var(--font-display);font-size:16px;font-weight:500;margin-bottom:5px;color:var(--color-ink);}
+.placeholder-note p{font-size:14px;margin:0;color:var(--color-ink-muted);}
+
+.resilient-demo{display:flex;gap:24px;align-items:flex-end;margin-top:var(--space-6);flex-wrap:wrap;justify-content:center;}
+.resilient-demo figure{margin:0;width:190px;}
+.resilient-demo figure.big{width:440px;flex:1;min-width:300px;}
+.resilient-demo .frame{position:relative;aspect-ratio:4/5;border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm);background:var(--color-border);}
+.resilient-demo figure.big .frame{aspect-ratio:16/10;box-shadow:var(--shadow-md);}
+.resilient-demo .frame img{width:100%;height:100%;object-fit:cover;display:block;}
+.resilient-demo figcaption{margin-top:10px;font-size:13px;color:var(--color-ink-muted);text-align:center;}
+.resilient-demo figcaption b{display:block;color:var(--color-ink);font-size:13px;margin-bottom:2px;}
+
+.btn{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;padding:15px 26px;border-radius:var(--radius-sm);border:none;cursor:pointer;text-decoration:none;}
+.btn-primary{background:var(--color-coffee);color:#FBF6EE;}
+.btn-whatsapp{background:var(--color-whatsapp);color:#fff;border-radius:var(--radius-full);padding:14px 24px;}
+
+.card-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:24px;margin-top:var(--space-6);align-items:start;}
+.plate .ph-photo{aspect-ratio:4/5;border-radius:var(--radius-md);overflow:hidden;background:var(--color-pink-soft);}
+.plate .ph-photo img{width:100%;height:100%;object-fit:cover;}
+.plate .body{padding:12px 2px 0;}
+.plate h4{font-family:var(--font-display);font-style:italic;font-weight:500;font-size:16px;margin:0;}
+.plate .price-row{display:flex;align-items:center;justify-content:space-between;margin-top:6px;padding-top:6px;border-top:1px solid var(--color-border);}
+.plate .price{font-weight:700;font-size:12.5px;color:var(--color-coffee);}
+.plate .ask{font-size:11.5px;font-weight:600;color:var(--color-pink-deep);}
+
+.mosaic{position:relative;aspect-ratio:16/9;margin-top:var(--space-6);border-radius:var(--radius-lg);overflow:hidden;background:var(--color-coffee);}
+.mosaic .cell{position:absolute;overflow:hidden;}
+.mosaic .cell img{width:100%;height:100%;object-fit:cover;}
+.mosaic .c1{top:0;left:0;width:56%;height:100%;clip-path:polygon(0 0, 100% 0, 62% 100%, 0% 100%);}
+.mosaic .c2{top:0;right:0;width:52%;height:52%;clip-path:polygon(38% 0, 100% 0, 100% 100%, 0 100%);}
+.mosaic .c3{bottom:0;right:0;width:52%;height:52%;clip-path:polygon(30% 0, 100% 0, 100% 100%, 0 100%);}
+.mosaic .diamond{position:absolute;top:50%;left:57%;transform:translate(-50%,-50%) rotate(45deg);width:88px;height:88px;background:var(--color-pink);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.25);}
+.mosaic .diamond .inner{transform:rotate(-45deg);display:flex;flex-direction:column;align-items:center;}
+.mosaic .diamond .flora-mark{width:22px;height:22px;color:#fff;}
+.mosaic .diamond .word{font-family:var(--font-word);font-size:10px;color:#fff;margin-top:3px;}
+
+.hero-mock{position:relative;overflow:hidden;background:var(--color-coffee);}
+.hero-mock .bg{position:absolute;inset:0;background:linear-gradient(155deg,#E8A9C6 0%,#C9668F 45%,#5A3A55 80%,#241A2E 100%);}
+.hero-mock .bg .watermark{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:70%;max-width:420px;opacity:.14;color:#fff;}
+.hero-mock .scrim-top{position:absolute;top:0;left:0;right:0;height:110px;background:linear-gradient(to bottom, rgba(0,0,0,.35), transparent);}
+.hero-mock .t-nav{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:20px 28px;}
+.hero-mock .pending-tag{position:absolute;top:14px;right:14px;z-index:3;background:rgba(0,0,0,.4);color:#fff;font-size:9px;letter-spacing:.05em;text-transform:uppercase;padding:4px 9px;border-radius:20px;}
+.hero-mock .content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:flex-start;text-align:left;}
+.hero-mock .content .word{font-family:var(--font-word);font-size:34px;color:#fff;}
+.hero-mock .content .sub{display:block;font-weight:700;font-size:10px;letter-spacing:.36em;color:var(--color-pink);}
+.hero-mock .content .tagline{font-family:var(--font-display);font-style:italic;color:#fff;margin-top:14px;font-size:22px;line-height:1.3;}
+.dsk-hero{height:480px;}
+.dsk-hero .t-nav{padding:24px 40px;}
+.dsk-hero .content{padding:0 60px 54px;height:100%;justify-content:flex-end;}
+
+.frame-wrap{display:flex;justify-content:center;margin-top:var(--space-7);}
+.phone-frame{width:300px;border-radius:36px;background:#1c130c;padding:11px;box-shadow:var(--shadow-lg);}
+.phone-screen{background:var(--color-cream);border-radius:26px;overflow:hidden;height:640px;position:relative;display:flex;flex-direction:column;}
+.phone-notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:110px;height:20px;background:#1c130c;border-radius:0 0 14px 14px;z-index:6;}
+.ph-hero{height:210px;flex-shrink:0;}
+.ph-hero .content .word{font-size:24px;}
+.ph-hero .content .tagline{font-size:14px;}
+.ph-hero .content{padding:0 20px 22px;height:100%;justify-content:flex-end;}
+.ph-story{padding:20px 0 6px 22px;position:relative;flex-shrink:0;}
+.ph-story .img{width:74%;margin-left:auto;aspect-ratio:4/5;border-radius:10px 0 0 10px;overflow:hidden;}
+.ph-story .img img{width:100%;height:100%;object-fit:cover;}
+.ph-story .txt{position:relative;margin-top:-50px;margin-right:28%;background:var(--color-white);padding:14px 15px 13px;border-radius:10px;box-shadow:var(--shadow-md);z-index:2;}
+.ph-story .eyebrow{font-size:8px;}
+.ph-story h3{font-family:var(--font-display);font-style:italic;font-size:14px;font-weight:500;margin-bottom:3px;}
+.ph-story p{font-size:10px;margin:0;}
+.ph-section-head{padding:20px 18px 10px;flex-shrink:0;}
+.ph-section-head h3{font-family:var(--font-display);font-style:italic;font-size:16px;font-weight:500;}
+.ph-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 18px;flex-shrink:0;}
+.ph-grid .item:nth-child(2){margin-top:20px;}
+.ph-plate .ph{aspect-ratio:4/5;border-radius:8px;overflow:hidden;}
+.ph-plate .ph img{width:100%;height:100%;object-fit:cover;}
+.ph-plate b{display:block;font-family:var(--font-display);font-style:italic;font-size:11px;margin-top:6px;font-weight:500;}
+.ph-plate span{display:block;font-size:9px;color:var(--color-coffee);font-weight:700;}
+.ph-fab{position:absolute;bottom:18px;right:14px;width:46px;height:46px;border-radius:50%;background:var(--color-whatsapp);display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 10px 24px rgba(37,211,102,.4);z-index:4;}
+.ph-fab .icon{width:21px;height:21px;stroke-width:1.5;}
+
+.browser-frame{background:var(--color-white);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-lg);margin-top:var(--space-7);border:1px solid var(--color-border);}
+.browser-bar{background:#EFE6EB;padding:11px 16px;display:flex;align-items:center;gap:7px;}
+.browser-bar .dot{width:9px;height:9px;border-radius:50%;background:#DAC5D1;}
+.browser-bar .url{margin-left:12px;background:#fff;border-radius:6px;padding:4px 12px;font-size:10.5px;color:var(--color-ink-muted);font-family:monospace;}
+.browser-body{background:var(--color-cream);}
+.dsk-nav-solid{display:flex;align-items:center;justify-content:space-between;padding:18px 40px;background:var(--color-cream);border-bottom:1px solid var(--color-border);}
+.dsk-nav-solid ul{list-style:none;display:flex;gap:26px;margin:0;padding:0;}
+.dsk-nav-solid a{font-size:11px;font-weight:600;text-decoration:none;color:var(--color-ink-muted);text-transform:uppercase;letter-spacing:.04em;}
+.dsk-nav-solid a.active{color:var(--color-ink);}
+.dsk-section-head{text-align:left;padding:56px 40px 24px;}
+.dsk-grid3{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:22px;padding:0 40px 64px;align-items:start;}
+.dsk-grid3 .plate:nth-child(2){margin-top:44px;}
+.dsk-footer{background:var(--color-coffee);color:#F2E2D2;padding:36px 40px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:flex-start;}
+.dsk-footer small{color:#E7D2BE;font-size:12px;}
+
+.next-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:var(--space-6);}
+.next-card{background:var(--color-white);border:1px solid var(--color-border);border-radius:var(--radius-md);padding:22px 24px;box-shadow:var(--shadow-xs);}
+.next-card .n{font-family:var(--font-display);font-style:italic;font-size:26px;color:var(--color-pink-deep);display:block;margin-bottom:8px;}
+.next-card b{display:block;font-size:14.5px;margin-bottom:4px;}
+.next-card p{font-size:13.5px;margin:0;}
+
+footer.doc-footer{padding:48px 0;text-align:center;color:var(--color-ink-faint);font-size:12px;}
+footer.doc-footer a{color:var(--color-pink-deep);font-weight:600;}
+
+@media (max-width:860px){
+  .ref-grid,.swatch-grid{grid-template-columns:repeat(2,1fr);}
+  .card-grid,.dsk-grid3,.next-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute;">
+  <symbol id="flora-mark" viewBox="-60 -62 120 124">
+    <g fill="none" stroke="currentColor" stroke-width="6.5">
+      <path d="M0,-6 C-15,-24 -14,-48 0,-58 C14,-48 15,-24 0,-6 Z" transform="rotate(0)"/>
+      <path d="M0,-6 C-15,-24 -14,-48 0,-58 C14,-48 15,-24 0,-6 Z" transform="rotate(120)"/>
+      <path d="M0,-6 C-15,-24 -14,-48 0,-58 C14,-48 15,-24 0,-6 Z" transform="rotate(240)"/>
+    </g>
+    <circle cx="0" cy="0" r="4.5" fill="currentColor" stroke="none"/>
+  </symbol>
+</svg>
+
+<div class="top-bar"><div class="container">
+  <span class="logo-inline"><svg class="flora-mark"><use href="#flora-mark"/></svg><span class="word">FLORA PASTEL</span></span>
+  <a class="switch" href="design-proposal.html">Versión técnica completa →</a>
+</div></div>
+
+<header class="cover">
+  <div class="container">
+    <div class="eyebrow">Propuesta de diseño — sitio web</div>
+    <h1>Un sitio que se ve, se siente<br>y se antoja como Flora Pastel.</h1>
+    <p class="lead">Antes de escribir una sola línea de código, así es como imaginamos tu sitio. No inventamos nada: usamos tus colores, tu símbolo de la flor y fotos de tus propios pasteles.</p>
+    <div class="cover-meta">
+      <div><strong>Para</strong>Flora Pastel · Guadalajara</div>
+      <div><strong>Páginas</strong>Inicio · Pasteles de Firma · Personalizados · Contacto</div>
+      <div><strong>Contacto principal</strong>Botón de WhatsApp</div>
+    </div>
+  </div>
+</header>
+
+<section class="doc-section">
+  <div class="container">
+    <div class="num">1</div>
+    <div class="section-intro">
+      <h2>Lo que ya te hace única</h2>
+      <p>Estas fotos nos las diste tú. No son inspiración de otra marca — es lo que ya tienes, y es el punto de partida de todo el diseño.</p>
+    </div>
+    <div class="ref-grid">
+      <div class="ref-card"><img src="Fachada.jpg" alt="Fachada de Flora Pastel"><p>Tu letrero — el símbolo de la flor y tu nombre.</p></div>
+      <div class="ref-card"><img src="interior.jpg" alt="Interior de Flora Pastel"><p>Tu local — colores cálidos y cajas rosas con listón.</p></div>
+      <div class="ref-card"><img src="354157613_648112027352691_902371246560871727_n.png" alt="Gráfico promocional de Flora Pastel"><p>Tus redes — el diamante rosa con tu símbolo.</p></div>
+      <div class="ref-card" style="display:flex;align-items:center;justify-content:center;background:var(--color-coffee);"><span class="logo-stack" style="color:#fff;"><svg class="flora-mark" style="color:#fff;"><use href="#flora-mark"/></svg><span class="word-block" style="color:#fff;"><span class="word" style="color:#fff;">FLORA</span><span class="sub" style="color:var(--color-pink);">PASTEL</span></span></span></div>
+    </div>
+  </div>
+</section>
+
+<section class="doc-section bg-soft">
+  <div class="container">
+    <div class="num">2</div>
+    <div class="section-intro">
+      <h2>Colores y letras</h2>
+      <p>Los mismos tonos de tu local, ordenados para que se vean igual de bien en una pantalla que en tu fachada.</p>
+    </div>
+    <div class="swatch-grid">
+      <div class="swatch"><div class="swatch-color" style="background:var(--color-pink)"></div><div class="swatch-label"><b>Rosa Flora</b><span>#D6478A</span></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:var(--color-pink-deep)"></div><div class="swatch-label"><b>Rosa profundo</b><span>#AD2F68</span></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:var(--color-coffee)"></div><div class="swatch-label"><b>Café Flora</b><span>#8B5A3C</span></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:var(--color-cream)"></div><div class="swatch-label"><b>Crema</b><span>#FBF6EE</span></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:var(--color-black)"></div><div class="swatch-label"><b>Negro listón</b><span>#17140F</span></div></div>
+    </div>
+
+    <div class="type-card">
+      <div class="type-row">
+        <div class="lbl">Tu símbolo</div>
+        <span class="logo-stack" style="align-items:flex-start;"><svg class="flora-mark"><use href="#flora-mark"/></svg><span class="word-block"><span class="word">FLORA</span><span class="sub">PASTEL</span></span></span>
+      </div>
+      <div class="type-row">
+        <div class="lbl">Para títulos</div>
+        <div class="h1-sample">El sabor de los<br><em>momentos importantes.</em></div>
+      </div>
+      <div class="type-row">
+        <div class="lbl">Para texto</div>
+        <div class="body-sample">Ingredientes de calidad y el sabor que te hace volver.</div>
+      </div>
+    </div>
+
+    <div class="placeholder-note">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 9v4M12 16.5h.01"/><path d="M10.3 3.9 1.8 18.5A1.8 1.8 0 0 0 3.35 21.2h17.3a1.8 1.8 0 0 0 1.55-2.7L13.7 3.9a1.8 1.8 0 0 0-3.4 0Z"/></svg>
+      <div>
+        <b>Sobre el símbolo de la flor</b>
+        <p>Lo que ves aquí es un boceto, dibujado a partir de la foto de tu letrero, solo para mostrarte la idea. En cuanto nos compartas el archivo original de tu logo, lo colocamos en su lugar — el resto del diseño no cambia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="doc-section">
+  <div class="container">
+    <div class="num">3</div>
+    <div class="section-intro">
+      <h2>La primera pantalla de tu sitio</h2>
+      <p>Grande, con espacio para respirar, y sin botones ni textos de más — solo tu marca y una frase.</p>
+    </div>
+    <div class="browser-frame" style="margin-top:0;">
+      <div class="browser-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">florapastel.mx</span></div>
+      <div class="hero-mock dsk-hero">
+        <div class="bg"><svg class="watermark" viewBox="-60 -62 120 124"><use href="#flora-mark"/></svg></div>
+        <div class="scrim-top"></div>
+        <span class="pending-tag">foto de ejemplo</span>
+        <div class="t-nav"><svg class="flora-mark" style="width:22px;height:22px;color:#fff;"><use href="#flora-mark"/></svg></div>
+        <div class="content"><span class="word">FLORA</span><span class="sub">PASTEL</span><p class="tagline">El sabor de los momentos importantes.</p></div>
+      </div>
+    </div>
+
+    <h3 style="margin-top:48px;">¿Y si no tenemos una foto perfecta todavía?</h3>
+    <p style="max-width:680px;">No pasa nada — pero tampoco hace falta ningún filtro ni logo encima del pastel. Eso le quita color y textura, y deja de antojar. Lo que realmente ayuda es darle espacio: la misma foto de catálogo, sin tocar, ya funciona como portada solo con estar grande y sola:</p>
+    <div class="resilient-demo">
+      <figure>
+        <div class="frame"><img src="crops/nuez.jpg" alt="Foto de catálogo, pequeña, como se ve entre otras fotos"></div>
+        <figcaption><b>En tu feed</b>Compitiendo con otras fotos alrededor.</figcaption>
+      </figure>
+      <figure class="big">
+        <div class="frame"><img src="crops/nuez.jpg" alt="La misma foto sin tocar, grande y sola, como portada"></div>
+        <figcaption><b>Como portada</b>La misma foto, sin ningún filtro — solo grande y con espacio alrededor.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="doc-section bg-soft">
+  <div class="container">
+    <div class="num">4</div>
+    <div class="section-intro">
+      <h2>Tus pasteles, en el sitio</h2>
+      <p>Fotos reales, tomadas directamente de tus redes — así es como se ven hoy, dentro del diseño.</p>
+    </div>
+    <div class="card-grid">
+      <div class="plate"><div class="ph-photo"><img src="crops/nuez.jpg" alt="Pastel de Nuez"></div><div class="body"><h4>Pastel de Nuez</h4><div class="price-row"><span class="price">Desde $650</span><span class="ask">Preguntar →</span></div></div></div>
+      <div class="plate"><div class="ph-photo"><img src="crops/frutos-rojos.jpg" alt="Frutos Rojos"></div><div class="body"><h4>Frutos Rojos</h4><div class="price-row"><span class="price">Desde $620</span><span class="ask">Preguntar →</span></div></div></div>
+      <div class="plate"><div class="ph-photo"><img src="crops/durazno.jpg" alt="Cheesecake Durazno"></div><div class="body"><h4>Cheesecake Durazno</h4><div class="price-row"><span class="price">Desde $580</span><span class="ask">Preguntar →</span></div></div></div>
+    </div>
+
+    <h3 style="margin-top:48px;">Una galería como la de tus redes</h3>
+    <p>Tomamos el mismo estilo de tu publicación del diamante rosa y lo convertimos en una galería real para el sitio:</p>
+    <div class="mosaic">
+      <div class="cell c1"><img src="crops/red-velvet.jpg" alt=""></div>
+      <div class="cell c2"><img src="crops/nuez.jpg" alt=""></div>
+      <div class="cell c3"><img src="crops/durazno.jpg" alt=""></div>
+      <div class="diamond"><div class="inner"><svg class="flora-mark"><use href="#flora-mark"/></svg><span class="word">FLORA</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="doc-section">
+  <div class="container">
+    <div class="num">5</div>
+    <div class="section-intro">
+      <h2>Así se ve en tu celular</h2>
+      <p>La mayoría de tus clientes va a llegar desde el teléfono — por eso empezamos ahí, no al revés.</p>
+    </div>
+    <div class="frame-wrap">
+      <div class="phone-frame">
+        <div class="phone-screen">
+          <div class="phone-notch"></div>
+          <div class="hero-mock ph-hero">
+            <div class="bg"><svg class="watermark" viewBox="-60 -62 120 124"><use href="#flora-mark"/></svg></div>
+            <div class="scrim-top"></div>
+            <div class="t-nav"><svg class="flora-mark" style="width:18px;height:18px;color:#fff;"><use href="#flora-mark"/></svg></div>
+            <div class="content"><span class="word">FLORA</span><span class="sub">PASTEL</span><p class="tagline">El sabor de<br>los momentos<br>importantes.</p></div>
+          </div>
+          <div class="ph-story">
+            <div class="img"><img src="Fachada.jpg" alt="Fachada Flora Pastel"></div>
+            <div class="txt"><div class="eyebrow">Nuestra historia</div><h3>Una cocina pequeña.</h3><p>El mismo cuidado desde el día uno.</p></div>
+          </div>
+          <div class="ph-section-head"><h3>Piezas destacadas</h3></div>
+          <div class="ph-grid">
+            <div class="item ph-plate"><div class="ph"><img src="crops/nuez.jpg" alt="Pastel de Nuez"></div><b>Pastel de Nuez</b><span>Desde $650</span></div>
+            <div class="item ph-plate"><div class="ph"><img src="crops/frutos-rojos.jpg" alt="Frutos Rojos"></div><b>Frutos Rojos</b><span>Desde $620</span></div>
+          </div>
+          <div class="ph-fab"><svg class="icon" viewBox="0 0 24 24" style="stroke:#fff;"><path d="M20 12a8 8 0 1 1-3.8-6.8"/><path d="M20.5 3.5 17 7"/></svg></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="doc-section bg-soft">
+  <div class="container">
+    <div class="num">6</div>
+    <div class="section-intro">
+      <h2>Así se ve en computadora</h2>
+      <p>El mismo sitio, con más espacio para lucir tus fotos.</p>
+    </div>
+    <div class="browser-frame">
+      <div class="browser-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">florapastel.mx</span></div>
+      <div class="browser-body">
+        <div class="dsk-nav-solid">
+          <span class="logo-inline"><svg class="flora-mark" style="width:20px;height:20px;"><use href="#flora-mark"/></svg><span class="word" style="font-size:14px;">FLORA PASTEL</span></span>
+          <ul><li><a href="#" class="active">Inicio</a></li><li><a href="#">Pasteles de Firma</a></li><li><a href="#">Pasteles Personalizados</a></li><li><a href="#">Contacto</a></li></ul>
+          <button class="btn btn-whatsapp" style="padding:8px 16px;font-size:10px;"><svg class="icon" viewBox="0 0 24 24" style="width:12px;height:12px;"><path d="M20 12a8 8 0 1 1-3.8-6.8"/><path d="M20.5 3.5 17 7"/></svg>WhatsApp</button>
+        </div>
+        <div class="dsk-section-head"><div class="eyebrow">Nuestra colección</div><h2>Piezas destacadas</h2></div>
+        <div class="dsk-grid3">
+          <div class="plate"><div class="ph-photo"><img src="crops/nuez.jpg" alt="Pastel de Nuez"></div><div class="body"><h4>Pastel de Nuez</h4><div class="price-row"><span class="price">Desde $650</span><span class="ask">Preguntar →</span></div></div></div>
+          <div class="plate"><div class="ph-photo"><img src="crops/frutos-rojos.jpg" alt="Frutos Rojos"></div><div class="body"><h4>Frutos Rojos</h4><div class="price-row"><span class="price">Desde $620</span><span class="ask">Preguntar →</span></div></div></div>
+          <div class="plate"><div class="ph-photo"><img src="crops/durazno.jpg" alt="Cheesecake Durazno"></div><div class="body"><h4>Cheesecake Durazno</h4><div class="price-row"><span class="price">Desde $580</span><span class="ask">Preguntar →</span></div></div></div>
+        </div>
+        <div class="dsk-footer">
+          <div><span class="logo-inline" style="color:#fff;"><svg class="flora-mark" style="width:20px;height:20px;color:#fff;"><use href="#flora-mark"/></svg><span class="word" style="color:#fff;font-size:15px;">FLORA PASTEL</span></span><small style="display:block;margin-top:8px;">Guadalajara, Jalisco, México</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="doc-section">
+  <div class="container">
+    <div class="num">7</div>
+    <div class="section-intro">
+      <h2>¿Qué necesitamos de ti?</h2>
+      <p>Muy poco, y nada complicado.</p>
+    </div>
+    <div class="next-grid">
+      <div class="next-card"><span class="n">01</span><b>El archivo de tu logo</b><p>Si existe en formato vectorial (AI, EPS, SVG o PDF), perfecto. Si no existe, no es un problema — seguimos adelante con el boceto mientras tanto.</p></div>
+      <div class="next-card"><span class="n">02</span><b>2–3 fotos grandes de tus pasteles favoritos</b><p>Con buena luz natural, fondo simple, tomadas con calma — no hace falta equipo profesional.</p></div>
+      <div class="next-card"><span class="n">03</span><b>Confirmar tus datos</b><p>Dirección, horarios, teléfono de WhatsApp y tus redes sociales.</p></div>
+      <div class="next-card"><span class="n">04</span><b>Tu luz verde</b><p>Con eso, empezamos a construir el sitio con este mismo diseño como base.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer class="doc-footer">
+  Flora Pastel — Propuesta de diseño · <a href="design-proposal.html">ver la versión técnica completa →</a>
+</footer>
+
+</body>
+</html>

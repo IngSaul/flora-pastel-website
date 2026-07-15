@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Flora Pastel — Website Design Proposal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Fraunces:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+
+/* ============ DESIGN TOKENS — v3, grounded in the real Flora Pastel storefront ============ */
+:root{
+  --color-pink:#D6478A;
+  --color-pink-deep:#AD2F68;
+  --color-pink-soft:#F8E1EC;
+  --color-coffee:#8B5A3C;
+  --color-coffee-2:#6E4429;
+  --color-cream:#FBF6EE;
+  --color-white:#FFFFFF;
+  --color-black:#17140F;
+  --color-ink:#8B5A3C;
+  --color-ink-muted:#7C6A5C;
+  --color-ink-faint:#B3A392;
+  --color-border:#ECE0E7;
+  --color-whatsapp:#25D366;
+  --color-whatsapp-dark:#1DA851;
+
+  --font-word:'Fjalla One', sans-serif;
+  --font-display:'Fraunces', serif;
+  --font-body:'Manrope', sans-serif;
+
+  --radius-xs:3px;
+  --radius-sm:8px;
+  --radius-md:14px;
+  --radius-lg:24px;
+  --radius-full:999px;
+
+  --shadow-xs:0 1px 2px rgba(23,20,15,.06);
+  --shadow-sm:0 3px 12px rgba(23,20,15,.08);
+  --shadow-md:0 10px 28px rgba(23,20,15,.11);
+  --shadow-lg:0 24px 56px rgba(23,20,15,.18);
+
+  --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px;
+  --space-5:24px; --space-6:32px; --space-7:48px; --space-8:64px;
+  --space-9:96px; --space-10:128px;
+
+  --ease-premium:cubic-bezier(.16,1,.3,1);
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--color-cream);
+  color:var(--color-ink);
+  font-family:var(--font-body);
+  font-size:16px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;}
+.icon{width:1em;height:1em;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}
+
+.container{max-width:1180px;margin:0 auto;padding:0 24px;}
+.doc-section{padding:var(--space-9) 0;}
+.doc-section.bg-soft{background:#F5EEE1;}
+.doc-section.bg-dark{background:var(--color-coffee);color:#EDEFF5;}
+.doc-section.bg-dark .muted{color:#AAB2C6;}
+
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--font-body);font-weight:700;font-size:12px;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--color-pink-deep);
+  margin:0 0 14px;
+}
+.doc-section.bg-dark .eyebrow{color:#EFA9C8;}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:500;color:var(--color-ink);margin:0 0 .4em;letter-spacing:-.01em;}
+.doc-section.bg-dark h1,.doc-section.bg-dark h2,.doc-section.bg-dark h3{color:#FBF6EE;}
+h1{font-size:clamp(2.2rem,4vw,3.4rem);line-height:1.05;font-weight:400;}
+h2{font-size:clamp(1.7rem,2.6vw,2.35rem);line-height:1.12;font-weight:400;}
+h3{font-size:1.25rem;line-height:1.3;font-weight:500;}
+p{margin:0 0 1em;color:var(--color-ink-muted);}
+.section-intro{max-width:680px;margin-bottom:var(--space-7);}
+.section-intro p{font-size:1.05rem;}
+.section-kicker-num{
+  font-family:var(--font-body);font-weight:700;font-size:13px;
+  color:var(--color-cream);background:var(--color-coffee);
+  width:32px;height:32px;border-radius:var(--radius-full);
+  display:inline-flex;align-items:center;justify-content:center;margin-bottom:18px;
+}
+
+/* ===== logo mark + lockups ===== */
+.flora-mark{display:block;}
+.logo-inline{display:inline-flex;align-items:center;gap:10px;}
+.logo-inline .flora-mark{width:26px;height:26px;color:var(--color-coffee);}
+.logo-inline .word{font-family:var(--font-word);font-size:19px;letter-spacing:.02em;color:var(--color-coffee);line-height:1;}
+.logo-stack{display:flex;flex-direction:column;align-items:center;gap:10px;}
+.logo-stack .flora-mark{width:52px;height:52px;color:var(--color-coffee);}
+.logo-stack .word-block{text-align:center;border-top:1.5px solid currentColor;padding-top:8px;}
+.logo-stack .word{font-family:var(--font-word);font-size:30px;letter-spacing:.03em;color:var(--color-coffee);line-height:1;}
+.logo-stack .sub{display:block;font-family:var(--font-body);font-weight:700;font-size:11px;letter-spacing:.42em;color:var(--color-pink-deep);margin-top:4px;padding-left:.42em;}
+.on-dark .flora-mark,.on-dark .word{color:#FBF6EE;}
+.on-dark .sub{color:var(--color-pink);}
+
+/* ===== top proposal nav ===== */
+.proposal-nav{
+  position:sticky;top:0;z-index:50;background:rgba(251,246,238,.9);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--color-border);
+}
+.proposal-nav .container{display:flex;align-items:center;justify-content:space-between;height:64px;gap:24px;}
+.proposal-nav ul{list-style:none;display:flex;gap:22px;margin:0;padding:0;flex-wrap:wrap;}
+.proposal-nav a{font-size:12.5px;font-weight:600;text-decoration:none;color:var(--color-ink-muted);letter-spacing:.03em;}
+.proposal-nav a:hover{color:var(--color-pink-deep);}
+
+/* ===== cover ===== */
+.cover{padding:var(--space-9) 0 var(--space-7);text-align:left;}
+.cover-meta{display:flex;gap:32px;flex-wrap:wrap;margin-top:28px;font-size:13px;color:var(--color-ink-muted);}
+.cover-meta strong{display:block;color:var(--color-ink);font-family:var(--font-display);font-size:14px;margin-bottom:2px;font-weight:500;}
+
+/* ===== revision banner ===== */
+.revision-banner{background:var(--color-coffee);color:#EDEFF5;border-radius:var(--radius-lg);padding:34px 40px;margin:0 0 var(--space-8);}
+.revision-banner .eyebrow{color:#EFA9C8;}
+.revision-banner h2{color:#FBF6EE;font-size:1.5rem;margin-bottom:14px;}
+.revision-banner p{color:#B9C0D4;font-size:14px;max-width:840px;}
+.revision-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:24px;}
+.revision-grid div{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius-md);padding:14px 16px;}
+.revision-grid b{display:block;font-family:var(--font-display);font-size:13.5px;color:var(--color-pink);margin-bottom:5px;font-weight:500;}
+.revision-grid span{font-size:11.5px;color:#B9C0D4;line-height:1.5;display:block;}
+
+/* ===== brand-asset cards (real, extracted) ===== */
+.asset-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:var(--space-5);}
+.asset-card{background:var(--color-white);border:1px solid var(--color-border);border-radius:var(--radius-md);padding:22px 20px;box-shadow:var(--shadow-xs);}
+.asset-card .demo{height:64px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
+.asset-card b{display:block;font-family:var(--font-display);font-size:15px;margin-bottom:5px;font-weight:500;}
+.asset-card span{font-size:12px;color:var(--color-ink-muted);line-height:1.5;}
+
+.photo-source-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:var(--space-5);}
+.photo-source-grid img{width:100%;height:90px;object-fit:cover;border-radius:var(--radius-sm);}
+.photo-source-grid .cap{font-size:10px;color:var(--color-ink-faint);text-align:center;margin-top:4px;}
+
+/* ===== reference thumbnails ===== */
+.ref-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:var(--space-6);}
+.ref-card{background:var(--color-white);border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm);border:1px solid var(--color-border);}
+.ref-card img{width:100%;height:180px;object-fit:cover;object-position:top;}
+.ref-card figcaption{padding:12px 14px;font-size:11.5px;color:var(--color-ink-muted);}
+.ref-card figcaption b{display:block;color:var(--color-ink);font-family:var(--font-display);font-size:12.5px;margin-bottom:3px;font-weight:500;}
+
+/* ===== analysis grid ===== */
+.analysis-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:var(--space-6);}
+.analysis-card{background:var(--color-white);border:1px solid var(--color-border);border-radius:var(--radius-md);padding:24px;box-shadow:var(--shadow-xs);}
+.analysis-card h4{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--color-pink-deep);margin-bottom:10px;font-family:var(--font-body);font-weight:700;}
+.analysis-card ul{margin:0;padding-left:16px;color:var(--color-ink-muted);font-size:13.5px;line-height:1.6;}
+.analysis-card li{margin-bottom:5px;}
+
+/* ===== before/after grid callout ===== */
+.split-callout{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:var(--space-6);border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--color-border);}
+.split-callout .side{padding:28px 32px;}
+.split-callout .no{background:var(--color-white);}
+.split-callout .yes{background:var(--color-coffee);}
+.split-callout h4{font-family:var(--font-body);font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;}
+.split-callout .no h4{color:var(--color-ink-faint);}
+.split-callout .yes h4{color:#EFA9C8;}
+.split-callout p{font-size:13px;margin:0;}
+.split-callout .yes p{color:#D7DAE6;}
+
+/* ===== 70/30 callout ===== */
+.ratio-callout{display:flex;align-items:center;gap:0;margin-top:var(--space-6);border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--color-border);}
+.ratio-callout .bar{height:120px;display:flex;align-items:center;justify-content:center;flex-direction:column;color:#fff;}
+.ratio-callout .photo{background:var(--color-coffee);flex:7;}
+.ratio-callout .design{background:var(--color-pink);flex:3;}
+.ratio-callout .bar b{font-family:var(--font-display);font-size:30px;font-weight:400;}
+.ratio-callout .bar span{font-size:11px;text-transform:uppercase;letter-spacing:.1em;margin-top:4px;}
+
+/* ===== placeholder / caution note ===== */
+.placeholder-note{display:flex;gap:16px;align-items:flex-start;background:var(--color-pink-soft);border:1px dashed var(--color-pink-deep);border-radius:var(--radius-md);padding:20px 24px;margin-top:var(--space-5);}
+.placeholder-note svg{width:22px;height:22px;flex-shrink:0;color:var(--color-pink-deep);margin-top:2px;}
+.placeholder-note b{display:block;font-family:var(--font-display);font-size:15px;font-weight:500;margin-bottom:4px;color:var(--color-ink);}
+.placeholder-note p{font-size:13.5px;margin:0;color:var(--color-ink-muted);}
+
+/* ===== resilient hero demo (works with good, not just perfect, photos) ===== */
+.resilient-demo{display:flex;gap:28px;align-items:flex-end;margin-top:var(--space-6);flex-wrap:wrap;}
+.resilient-demo figure{margin:0;width:190px;}
+.resilient-demo figure.big{width:440px;flex:1;min-width:320px;}
+.resilient-demo .frame{position:relative;aspect-ratio:4/5;border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm);background:var(--color-border);}
+.resilient-demo figure.big .frame{aspect-ratio:16/10;box-shadow:var(--shadow-md);}
+.resilient-demo .frame img{width:100%;height:100%;object-fit:cover;display:block;}
+.resilient-demo figcaption{margin-top:10px;font-size:12px;color:var(--color-ink-muted);text-align:center;}
+.resilient-demo figcaption b{display:block;color:var(--color-ink);font-size:12.5px;margin-bottom:2px;}
+
+/* ===== swatches ===== */
+.swatch-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:var(--space-6);}
+.swatch{border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm);border:1px solid var(--color-border);background:var(--color-white);}
+.swatch-color{height:82px;}
+.swatch-label{padding:12px 14px;}
+.swatch-label b{display:block;font-family:var(--font-display);font-size:13px;font-weight:500;}
+.swatch-label span{display:block;font-size:11.5px;color:var(--color-ink-muted);font-family:monospace;margin-top:2px;}
+.swatch-label small{display:block;font-size:11px;color:var(--color-ink-faint);margin-top:6px;line-height:1.4;}
+
+/* ===== type specimen ===== */
+.type-specimen{background:var(--color-white);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:36px;margin-top:var(--space-6);box-shadow:var(--shadow-sm);}
+.type-row{display:flex;align-items:baseline;justify-content:space-between;gap:24px;padding:20px 0;border-bottom:1px dashed var(--color-border);flex-wrap:wrap;}
+.type-row:last-child{border-bottom:none;padding-bottom:0;}
+.type-row:first-child{padding-top:0;}
+.type-sample{flex:1;min-width:280px;}
+.type-meta{font-size:12px;color:var(--color-ink-faint);font-family:monospace;white-space:nowrap;}
+.h1-sample{font-family:var(--font-display);font-weight:400;font-size:40px;color:var(--color-ink);line-height:1.08;}
+.h1-sample em{font-style:italic;color:var(--color-pink-deep);}
+.h3-sample{font-family:var(--font-body);font-weight:700;font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-ink);}
+.body-sample{font-family:var(--font-body);font-size:17px;color:var(--color-ink-muted);max-width:480px;}
+.caption-sample{font-family:var(--font-body);font-weight:700;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--color-pink-deep);}
+
+/* ===== scales ===== */
+.scale-block{margin-top:var(--space-6);}
+.scale-row{display:flex;align-items:center;gap:16px;margin-bottom:10px;}
+.scale-row .label{width:70px;font-family:monospace;font-size:12px;color:var(--color-ink-muted);flex-shrink:0;}
+.scale-bar{height:14px;background:var(--color-coffee);border-radius:2px;}
+
+.radius-grid{display:flex;gap:22px;flex-wrap:wrap;margin-top:var(--space-6);}
+.radius-box{width:90px;height:90px;background:var(--color-pink-soft);display:flex;align-items:flex-end;justify-content:center;padding-bottom:10px;}
+.radius-box span{font-family:monospace;font-size:11px;color:var(--color-coffee);background:rgba(255,255,255,.6);padding:2px 6px;border-radius:4px;}
+
+/* ===== buttons ===== */
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--font-body);font-weight:700;font-size:12.5px;
+  letter-spacing:.06em;text-transform:uppercase;
+  padding:15px 26px;border-radius:var(--radius-sm);border:none;cursor:pointer;
+  text-decoration:none;transition:transform 240ms var(--ease-premium),box-shadow 240ms var(--ease-premium),background 240ms var(--ease-premium);
+}
+.btn .icon{width:16px;height:16px;}
+.btn-primary{background:var(--color-coffee);color:#FBF6EE;}
+.btn-primary:hover{background:var(--color-coffee-2);transform:translateY(-2px);box-shadow:var(--shadow-md);}
+.btn-secondary{background:transparent;color:var(--color-coffee);border:1px solid var(--color-coffee);}
+.btn-secondary:hover{background:var(--color-coffee);color:#FBF6EE;transform:translateY(-2px);}
+.btn-whatsapp{background:var(--color-whatsapp);color:#fff;border-radius:var(--radius-full);padding:14px 24px;}
+.btn-whatsapp:hover{background:var(--color-whatsapp-dark);transform:translateY(-2px);box-shadow:0 12px 28px rgba(37,211,102,.3);}
+.btn-text{background:none;padding:8px 0;color:var(--color-pink-deep);text-transform:none;letter-spacing:0;font-size:14.5px;border-bottom:1px solid currentColor;border-radius:0;font-weight:600;}
+.btn-text:hover{color:var(--color-coffee);transform:none;}
+.btn-row{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-top:var(--space-6);}
+
+/* ===== catalogue plates — real photography ===== */
+.card-demo-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:26px;margin-top:var(--space-6);align-items:start;}
+.plate .ph-photo{aspect-ratio:4/5;border-radius:var(--radius-md);overflow:hidden;background:var(--color-pink-soft);}
+.plate .ph-photo img{width:100%;height:100%;object-fit:cover;}
+.plate .body{padding:12px 2px 0;}
+.plate h4{font-family:var(--font-display);font-style:italic;font-weight:500;font-size:16px;margin-bottom:0;}
+.plate .price-row{display:flex;align-items:center;justify-content:space-between;margin-top:6px;padding-top:6px;border-top:1px solid var(--color-border);}
+.plate .price{font-family:var(--font-body);font-weight:700;font-size:12.5px;color:var(--color-coffee);}
+.plate .ask{font-size:11.5px;font-weight:600;color:var(--color-pink-deep);text-decoration:none;border-bottom:1px solid transparent;}
+.plate .ask:hover{border-color:currentColor;}
+
+/* ===== storytelling components ===== */
+.process-row{display:grid;grid-template-columns:repeat(4,1fr);margin-top:var(--space-6);}
+.process-step{padding:0 22px;border-left:1px solid var(--color-border);}
+.process-step:first-child{border-left:none;padding-left:0;}
+.process-step .num{font-family:var(--font-display);font-style:italic;font-size:32px;color:var(--color-pink-deep);display:block;margin-bottom:8px;font-weight:400;}
+.process-step h4{font-size:13.5px;margin-bottom:5px;font-weight:700;font-family:var(--font-body);}
+.process-step p{font-size:12px;margin:0;}
+.pull-quote{background:var(--color-white);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:40px 46px;margin-top:var(--space-6);}
+.pull-quote .mark{font-family:var(--font-display);font-size:52px;color:var(--color-pink);line-height:.4;display:block;margin-bottom:12px;}
+.pull-quote p{font-family:var(--font-display);font-style:italic;font-size:22px;color:var(--color-ink);line-height:1.4;max-width:620px;}
+.pull-quote cite{font-style:normal;font-size:12px;color:var(--color-ink-muted);letter-spacing:.04em;}
+
+/* ===== Flora mosaic — signature gallery device, adapted from the brand's own IG collage ===== */
+.mosaic{position:relative;aspect-ratio:16/9;margin-top:var(--space-6);border-radius:var(--radius-lg);overflow:hidden;background:var(--color-coffee);}
+.mosaic .cell{position:absolute;overflow:hidden;}
+.mosaic .cell img{width:100%;height:100%;object-fit:cover;}
+.mosaic .c1{top:0;left:0;width:56%;height:100%;clip-path:polygon(0 0, 100% 0, 62% 100%, 0% 100%);}
+.mosaic .c2{top:0;right:0;width:52%;height:52%;clip-path:polygon(38% 0, 100% 0, 100% 100%, 0 100%);}
+.mosaic .c3{bottom:0;right:0;width:52%;height:52%;clip-path:polygon(30% 0, 100% 0, 100% 100%, 0 100%);}
+.mosaic .diamond{position:absolute;top:50%;left:57%;transform:translate(-50%,-50%) rotate(45deg);width:96px;height:96px;background:var(--color-pink);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.25);}
+.mosaic .diamond .inner{transform:rotate(-45deg);display:flex;flex-direction:column;align-items:center;}
+.mosaic .diamond .flora-mark{width:26px;height:26px;color:#fff;}
+.mosaic .diamond .word{font-family:var(--font-word);font-size:11px;color:#fff;margin-top:3px;letter-spacing:.02em;}
+
+/* ===== ribbon divider ===== */
+.ribbon-divider{display:flex;align-items:center;justify-content:center;gap:10px;margin:var(--space-6) 0;color:var(--color-black);}
+.ribbon-divider .line{height:1px;width:64px;background:currentColor;opacity:.35;}
+.ribbon-divider svg{width:22px;height:22px;}
+
+/* ===== nav preview ===== */
+.nav-preview{background:var(--color-white);border:1px solid var(--color-border);border-radius:var(--radius-md);padding:16px 24px;display:flex;align-items:center;justify-content:space-between;box-shadow:var(--shadow-sm);margin-top:var(--space-6);}
+.nav-preview ul{list-style:none;display:flex;gap:28px;margin:0;padding:0;}
+.nav-preview a{font-size:12px;font-weight:600;text-decoration:none;color:var(--color-ink-muted);letter-spacing:.04em;text-transform:uppercase;padding-bottom:4px;border-bottom:1px solid transparent;}
+.nav-preview a.active{color:var(--color-ink);border-color:var(--color-pink-deep);}
+.nav-preview .right{display:flex;gap:12px;align-items:center;}
+
+/* ===== animation / interaction table ===== */
+.anim-table{width:100%;border-collapse:collapse;margin-top:var(--space-6);font-size:13.5px;}
+.anim-table th,.anim-table td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--color-border);}
+.anim-table th{font-family:var(--font-body);font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--color-pink-deep);font-weight:700;}
+.anim-table td.mono{font-family:monospace;font-size:12px;color:var(--color-ink-muted);}
+
+/* ===== wireframes ===== */
+.wire-tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:var(--space-6);}
+.wire-page h4{text-align:center;margin-bottom:14px;font-size:12.5px;color:var(--color-pink-deep);text-transform:uppercase;letter-spacing:.08em;font-family:var(--font-body);font-weight:700;}
+.wire-frame{background:var(--color-white);border:1px solid var(--color-border);border-radius:var(--radius-md);padding:12px;box-shadow:var(--shadow-xs);}
+.wire-block{
+  border:1.5px dashed #D9AFC4;background:#FCF2F7;border-radius:6px;
+  padding:10px 8px;margin-bottom:8px;text-align:center;
+  font-family:monospace;font-size:9.5px;color:#9C4E76;letter-spacing:.01em;
+}
+.wire-block.tall{padding-top:24px;padding-bottom:24px;}
+.wire-block.xtall{padding-top:44px;padding-bottom:44px;}
+.wire-block.story{background:#EFF1F7;border-color:#AEB7D1;color:#3E4A6B;}
+.wire-block.gridAsym{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:8px;}
+.wire-block.gridAsym span{border:1.5px dashed #D9AFC4;border-radius:4px;background:#fff;padding:10px 2px;}
+.wire-block.gridAsym span.big{grid-column:span 2;grid-row:span 2;padding:30px 2px;}
+.wire-block.dark{background:var(--color-coffee);color:#DCE0EC;border-style:solid;border-color:var(--color-coffee);}
+.wire-block.offset{margin-left:10%;margin-right:-6%;}
+
+/* ===== component tree ===== */
+.tree{font-family:monospace;font-size:13px;background:var(--color-coffee);color:#DDE1EE;border-radius:var(--radius-lg);padding:34px 38px;margin-top:var(--space-6);overflow-x:auto;box-shadow:var(--shadow-md);}
+.tree ul{list-style:none;margin:0;padding-left:22px;border-left:1px dashed #46527A;}
+.tree > ul{padding-left:0;border-left:none;}
+.tree li{position:relative;padding:4px 0 4px 18px;}
+.tree li::before{content:"";position:absolute;left:0;top:16px;width:14px;height:1px;background:#46527A;}
+.tree .tag{color:#F0A0C4;}
+.tree .note{color:#8891AB;font-style:italic;}
+.tree .new{color:#7FC29A;}
+
+/* ===== hero mockups ===== */
+.hero-mock{position:relative;overflow:hidden;background:var(--color-coffee);}
+.hero-mock .bg{position:absolute;inset:0;background:linear-gradient(155deg,#E8A9C6 0%,#C9668F 45%,#5A3A55 80%,#241A2E 100%);}
+.hero-mock .bg .watermark{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:70%;max-width:480px;opacity:.14;color:#fff;}
+.hero-mock .scrim-top{position:absolute;top:0;left:0;right:0;height:120px;background:linear-gradient(to bottom, rgba(0,0,0,.35), transparent);}
+.hero-mock .t-nav{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:22px 30px;}
+.hero-mock .t-nav ul{list-style:none;display:flex;gap:24px;margin:0;padding:0;}
+.hero-mock .t-nav a{font-size:11px;font-weight:600;color:#fff;text-decoration:none;text-transform:uppercase;letter-spacing:.06em;opacity:.9;}
+.hero-mock .pending-tag{position:absolute;top:16px;right:16px;z-index:3;background:rgba(0,0,0,.4);color:#fff;font-family:monospace;font-size:9px;letter-spacing:.05em;text-transform:uppercase;padding:4px 9px;border-radius:20px;}
+.hero-mock .content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:flex-start;text-align:left;}
+.hero-mock .content .word{font-size:26px;}
+.hero-mock .content .sub{font-size:9.5px;letter-spacing:.34em;}
+.hero-mock .content .tagline{font-family:var(--font-display);font-style:italic;color:#fff;margin-top:16px;line-height:1.3;}
+.hero-mock .scroll-cue{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);color:#fff;opacity:.7;font-size:9px;letter-spacing:.1em;text-transform:uppercase;z-index:2;}
+
+/* ===== mobile frame ===== */
+.frame-wrap{display:flex;justify-content:center;margin-top:var(--space-7);}
+.phone-frame{
+  width:320px;border-radius:38px;background:#1c130c;padding:12px;box-shadow:var(--shadow-lg);
+}
+.phone-screen{
+  background:var(--color-cream);border-radius:28px;overflow:hidden;height:770px;position:relative;
+  display:flex;flex-direction:column;
+}
+.phone-notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:120px;height:22px;background:#1c130c;border-radius:0 0 16px 16px;z-index:6;}
+.ph-hero{height:225px;flex-shrink:0;}
+.ph-hero .content{padding:0 22px 24px;height:100%;justify-content:flex-end;}
+.ph-story{padding:20px 0 6px 24px;position:relative;flex-shrink:0;}
+.ph-story .img{width:74%;margin-left:auto;aspect-ratio:4/5;border-radius:10px 0 0 10px;overflow:hidden;}
+.ph-story .img img{width:100%;height:100%;object-fit:cover;}
+.ph-story .txt{position:relative;margin-top:-54px;margin-right:30%;background:var(--color-white);padding:16px 16px 14px;border-radius:10px;box-shadow:var(--shadow-md);z-index:2;}
+.ph-story .eyebrow{font-size:8.5px;}
+.ph-story h3{font-family:var(--font-display);font-style:italic;font-size:15px;font-weight:500;margin-bottom:3px;}
+.ph-story p{font-size:10.5px;margin:0;}
+.ph-section-head{padding:22px 20px 12px;flex-shrink:0;}
+.ph-section-head .eyebrow{font-size:8.5px;}
+.ph-section-head h3{font-family:var(--font-display);font-style:italic;font-size:17px;font-weight:500;}
+.ph-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0 20px;flex-shrink:0;}
+.ph-grid .item:nth-child(2){margin-top:22px;}
+.ph-plate .ph{aspect-ratio:4/5;border-radius:8px;overflow:hidden;}
+.ph-plate .ph img{width:100%;height:100%;object-fit:cover;}
+.ph-plate b{display:block;font-family:var(--font-display);font-style:italic;font-size:11.5px;margin-top:6px;font-weight:500;}
+.ph-plate span{display:block;font-size:9px;color:var(--color-coffee);font-weight:700;margin-top:1px;}
+.ph-fab{
+  position:absolute;bottom:20px;right:16px;width:50px;height:50px;border-radius:50%;
+  background:var(--color-whatsapp);display:flex;align-items:center;justify-content:center;color:#fff;
+  box-shadow:0 10px 24px rgba(37,211,102,.4);z-index:4;
+}
+.ph-fab .icon{width:23px;height:23px;stroke-width:1.5;}
+
+.mobile-callouts{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;max-width:640px;margin:var(--space-6) auto 0;}
+.callout{background:var(--color-white);border:1px solid var(--color-border);border-radius:var(--radius-md);padding:16px 18px;font-size:13px;color:var(--color-ink-muted);}
+.callout b{display:block;color:var(--color-pink-deep);font-family:var(--font-display);font-style:italic;font-size:14px;margin-bottom:4px;font-weight:500;}
+
+/* ===== desktop browser frame ===== */
+.browser-frame{background:var(--color-white);border-radius:18px;overflow:hidden;box-shadow:var(--shadow-lg);margin-top:var(--space-7);border:1px solid var(--color-border);}
+.browser-bar{background:#EFE6EB;padding:12px 18px;display:flex;align-items:center;gap:8px;}
+.browser-bar .dot{width:10px;height:10px;border-radius:50%;background:#DAC5D1;}
+.browser-bar .url{margin-left:14px;background:#fff;border-radius:6px;padding:5px 14px;font-size:11px;color:var(--color-ink-muted);font-family:monospace;}
+.browser-body{background:var(--color-cream);padding:0;}
+.dsk-hero{height:600px;}
+.dsk-hero .t-nav{padding:26px 48px;}
+.dsk-hero .content{padding:0 100px 64px;}
+.dsk-hero .content .word{font-size:40px;}
+.dsk-hero .content .sub{font-size:12px;letter-spacing:.4em;}
+.dsk-hero .content .tagline{font-size:26px;max-width:420px;}
+.dsk-nav-solid{display:flex;align-items:center;justify-content:space-between;padding:20px 48px;background:var(--color-cream);border-bottom:1px solid var(--color-border);}
+.dsk-nav-solid ul{list-style:none;display:flex;gap:32px;margin:0;padding:0;}
+.dsk-nav-solid a{font-size:11.5px;font-weight:600;text-decoration:none;color:var(--color-ink-muted);text-transform:uppercase;letter-spacing:.05em;padding-bottom:3px;border-bottom:1px solid transparent;}
+.dsk-nav-solid a.active{color:var(--color-ink);border-color:var(--color-pink-deep);}
+.dsk-story{position:relative;padding:100px 48px 130px;}
+.dsk-story .img{width:56%;aspect-ratio:16/11;border-radius:var(--radius-lg);overflow:hidden;margin-left:auto;box-shadow:var(--shadow-md);}
+.dsk-story .img img{width:100%;height:100%;object-fit:cover;}
+.dsk-story .txt{position:absolute;left:48px;top:150px;width:42%;background:var(--color-white);padding:36px 38px;border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);z-index:2;}
+.dsk-story .txt h2{font-size:28px;margin-bottom:10px;}
+.dsk-story .txt p{font-size:14px;margin-bottom:14px;}
+.dsk-section-head{text-align:left;padding:0 48px 30px;}
+.dsk-grid3{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:26px;padding:0 48px 80px;align-items:start;}
+.dsk-grid3 .plate:nth-child(2){margin-top:52px;}
+.dsk-footer{background:var(--color-coffee);color:#C7CCDE;padding:44px 48px;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:flex-start;}
+.dsk-footer small{color:#8891AB;font-size:12px;}
+.dsk-footer ul{list-style:none;padding:0;margin:0;display:flex;gap:22px;}
+.dsk-footer a{font-size:11.5px;text-decoration:none;color:#C7CCDE;text-transform:uppercase;letter-spacing:.04em;}
+
+.desktop-callouts{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:var(--space-6);}
+
+footer.doc-footer{padding:56px 0;text-align:center;color:var(--color-ink-faint);font-size:12.5px;}
+
+.doc-mode-bar{background:var(--color-ink);color:#F1E4D3;}
+.doc-mode-bar .container{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;padding:10px 24px;font-size:12px;text-align:center;}
+.doc-mode-bar b{font-weight:700;}
+.doc-mode-bar a{color:#F3B4CE;text-decoration:underline;font-weight:600;}
+
+@media (max-width:900px){
+  .ref-grid,.analysis-grid,.swatch-grid,.wire-tabs,.asset-grid{grid-template-columns:repeat(2,1fr);}
+  .card-demo-grid,.dsk-grid3,.process-row,.revision-grid{grid-template-columns:1fr;}
+  .photo-source-grid{grid-template-columns:repeat(3,1fr);}
+  .proposal-nav ul{display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- shared flower-mark symbol, redrawn from the storefront sign (approximation — swap for client's vector logo when available) -->
+<svg width="0" height="0" style="position:absolute;">
+  <symbol id="flora-mark" viewBox="-60 -62 120 124">
+    <g fill="none" stroke="currentColor" stroke-width="6.5">
+      <path d="M0,-6 C-15,-24 -14,-48 0,-58 C14,-48 15,-24 0,-6 Z" transform="rotate(0)"/>
+      <path d="M0,-6 C-15,-24 -14,-48 0,-58 C14,-48 15,-24 0,-6 Z" transform="rotate(120)"/>
+      <path d="M0,-6 C-15,-24 -14,-48 0,-58 C14,-48 15,-24 0,-6 Z" transform="rotate(240)"/>
+    </g>
+    <circle cx="0" cy="0" r="4.5" fill="currentColor" stroke="none"/>
+  </symbol>
+</svg>
+
+<nav class="proposal-nav">
+  <div class="container">
+    <span class="logo-inline"><svg class="flora-mark"><use href="#flora-mark"/></svg><span class="word">FLORA PASTEL</span></span>
+    <ul>
+      <li><a href="#analysis">01 Analysis</a></li>
+      <li><a href="#system">02 System</a></li>
+      <li><a href="#wireframe">03 Wireframe</a></li>
+      <li><a href="#hierarchy">04 Components</a></li>
+      <li><a href="#mobile">05 Mobile</a></li>
+      <li><a href="#desktop">06 Desktop</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="doc-mode-bar"><div class="container"><b>Versión interna / técnica</b> — documento de referencia para el equipo de desarrollo. <a href="propuesta-flora-pastel.html">Ver la versión para cliente →</a></div></div>
+
+<header class="cover">
+  <div class="container">
+    <div class="eyebrow">Design Proposal · v3 — Grounded in the real storefront · Internal/technical reference</div>
+    <h1>Not "a" flower. <em style="font-style:italic;color:var(--color-pink-deep);">Your</em> flower.</h1>
+    <p style="max-width:640px;font-size:1.05rem;">Third pass, after two rounds of feedback and three new photos of the actual shop. Everything invented in v1/v2 — the script logo, the ivory-and-gold palette, the borrowed French-patisserie mood — is retired. This version is built from what's already on your storefront sign, your pink boxes, and your own Instagram graphic: a geometric flower mark, a bold wordmark, bubblegum pink, and a black ribbon accent — now paired with a warm coffee-brown sampled from a Flora Pastel promo graphic instead of the sign's navy. It also breaks the grid on purpose, says less, and uses your real product photography instead of gradients wherever the resolution allows.</p>
+    <div class="cover-meta">
+      <div><strong>Prepared for</strong>Flora Pastel · Guadalajara, MX</div>
+      <div><strong>Scope</strong>Home · Pasteles de Firma · Pasteles Personalizados · Contacto</div>
+      <div><strong>Language</strong>Español (México)</div>
+      <div><strong>Primary conversion</strong>WhatsApp contact</div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="revision-banner">
+    <div class="eyebrow">Round 3 — five specific corrections</div>
+    <h2>Grounded, imperfect, unmistakably Flora.</h2>
+    <div class="revision-grid">
+      <div><b>1 · Too perfect</b><span>Grid intentionally broken: hero copy sits off-center, the story photo bleeds past the container and the headline overlaps it, the catalogue grid staggers instead of aligning.</span></div>
+      <div><b>2 · Too much text</b><span>Storytelling copy cut to one line + one short sentence, max. A "copy law" is now a written rule in section 02, not just a v3 fix.</span></div>
+      <div><b>3 · No real identity</b><span>The invented script logo and gold accents are gone. In: your actual flower mark, brand pink, a coffee-brown sampled from your own promo graphics, and a mosaic gallery device lifted straight from your own Instagram post.</span></div>
+      <div><b>4 · Hero, more ambitious</b><span>Full-bleed photo, transparent nav, and nothing else: mark, wordmark, one tagline. No button, no card, no subcopy paragraph.</span></div>
+      <div><b>5 · Photography is the bottleneck</b><span>Placeholders replaced with real crops from your product photo and storefront wherever resolution allows — see the 70/30 callout in section 02.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= 01 ANALYSIS ================= -->
+<section id="analysis" class="doc-section">
+  <div class="container">
+    <div class="section-kicker-num">01</div>
+    <div class="section-intro">
+      <h2>Design analysis</h2>
+      <p>Three new photos changed the brief: the storefront, the interior, and an existing promotional graphic. These aren't mood-board inspiration — they're the actual brand. Everything below is sampled or redrawn directly from them.</p>
+    </div>
+
+    <div class="ref-grid">
+      <div class="ref-card"><img src="Fachada.jpg" alt="Flora Pastel storefront facade with pink scalloped awning and flower logo sign"><figcaption><b>Fachada</b>Flower mark + navy "FLORA" wordmark, pink/white scalloped awning, marigolds at the entrance.</figcaption></div>
+      <div class="ref-card"><img src="interior.jpg" alt="Flora Pastel interior with pink signage boards and pink packaging boxes"><figcaption><b>Interior</b>Warm cream walls, pink menu boards, pink gift boxes tied with black ribbon.</figcaption></div>
+      <div class="ref-card"><img src="354157613_648112027352691_902371246560871727_n.png" alt="Flora Pastel Instagram promotional graphic with diagonal photo collage and pink diamond logo"><figcaption><b>Promo graphic</b>Their own diagonal photo-collage device, with the flower mark centered in a pink diamond.</figcaption></div>
+      <div class="ref-card" style="display:flex;align-items:center;justify-content:center;background:var(--color-coffee);"><span class="logo-stack on-dark"><svg class="flora-mark"><use href="#flora-mark"/></svg><span class="word-block"><span class="word">FLORA</span><span class="sub">PASTEL</span></span></span></div>
+    </div>
+
+    <h3 style="margin-top:56px;">What v1/v2 got wrong</h3>
+    <div class="split-callout">
+      <div class="side no">
+        <h4>Invented (v1 → v2)</h4>
+        <p>Cursive script logo, ivory/gold/dusty-rose palette, dark-chocolate ink, a generic "French patisserie" mood borrowed from Ladurée and Cédric Grolet — none of it traceable to Flora Pastel specifically.</p>
+      </div>
+      <div class="side yes">
+        <h4>Real (v3)</h4>
+        <p>A geometric flower mark already on the sign. Bubblegum pink from the awning and packaging. A warm coffee-brown from their own "Martes de Panqués" promo graphic, replacing the sign's navy for a softer, more edible tone. A black ribbon from the actual boxes. A diagonal photo-mosaic device from their own Instagram post.</p>
+      </div>
+    </div>
+
+    <div class="analysis-grid" style="margin-top:48px;">
+      <div class="analysis-card">
+        <h4>Grid &amp; symmetry</h4>
+        <ul>
+          <li>v2 was correct in every measurement and boring for it — nothing was off-balance.</li>
+          <li>v3 hero copy sits left-of-center, low in the frame, never dead-center.</li>
+          <li>Story section: photo bleeds past the container edge; headline card overlaps the photo instead of sitting beside it.</li>
+          <li>Catalogue grid: one plate staggers down from its neighbors — a deliberate, not accidental, misalignment.</li>
+        </ul>
+      </div>
+      <div class="analysis-card">
+        <h4>Copy discipline</h4>
+        <ul>
+          <li>New rule, not a one-off: every storytelling section gets one short line, max one sentence.</li>
+          <li>Hero: mark + wordmark + a single tagline. Nothing explains itself.</li>
+          <li>Catalogue captions drop the description line entirely — name, price, "Preguntar" is enough.</li>
+        </ul>
+      </div>
+      <div class="analysis-card">
+        <h4>Ownable elements</h4>
+        <ul>
+          <li>The flower mark, redrawn as a reusable SVG — usable as a favicon, a watermark, a photo-mask.</li>
+          <li>The diagonal mosaic gallery, adapted from their own Instagram post into a real responsive component.</li>
+          <li>A thin black ribbon-line, echoing the box packaging, as a section divider.</li>
+          <li>None of these three exist anywhere else — they can't be swapped onto another bakery's site.</li>
+        </ul>
+      </div>
+      <div class="analysis-card">
+        <h4>Hero, taken further</h4>
+        <ul>
+          <li>Nav goes fully transparent over the photo — no bar, no background, just a gradient scrim at the very top for legibility.</li>
+          <li>No button, no CTA row, no subcopy paragraph — the ask example ("El sabor de los momentos importantes.") is used verbatim.</li>
+          <li>Nav becomes solid only after the visitor scrolls past the hero.</li>
+        </ul>
+      </div>
+      <div class="analysis-card">
+        <h4>Photography reality check</h4>
+        <ul>
+          <li>Existing product photography (the nut-crusted cake, the berry cake, the cheesecakes) is genuinely good — cropped, it holds up at catalogue size.</li>
+          <li>It does not hold up at full-bleed hero size — resolution runs out. The hero placeholder stays a labeled placeholder, honestly.</li>
+          <li>Section 02 sets a concrete shot list so a proper hero shoot is a scoped, one-time cost — not a vague ongoing risk.</li>
+        </ul>
+      </div>
+      <div class="analysis-card">
+        <h4>What stays from v2</h4>
+        <ul>
+          <li>Rectangular, restrained buttons over v1's pill-everywhere — still correct, kept.</li>
+          <li>Photography-led catalogue over ecommerce cards — still correct, kept, now with real photos.</li>
+          <li>Fraunces for editorial section headlines — kept, now paired with the real flower mark and coffee-brown wordmark instead of a script logo.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 02 DESIGN SYSTEM ================= -->
+<section id="system" class="doc-section bg-soft">
+  <div class="container">
+    <div class="section-kicker-num">02</div>
+    <div class="section-intro">
+      <h2>Design system</h2>
+      <p>Tokens sampled from the real storefront and packaging, plus the three signature elements that make this system unmistakably Flora Pastel's.</p>
+    </div>
+
+    <h3>Signature elements — not available to anyone else</h3>
+    <div class="asset-grid">
+      <div class="asset-card">
+        <div class="demo"><svg class="flora-mark" style="width:44px;height:44px;color:var(--color-coffee);"><use href="#flora-mark"/></svg></div>
+        <b>The flower mark</b>
+        <span>Redrawn from the sign. Used as favicon, a large low-opacity watermark behind section headers, and a photo-mask for the hero.</span>
+      </div>
+      <div class="asset-card">
+        <div class="demo" style="width:100%;height:64px;position:relative;background:var(--color-coffee);border-radius:8px;overflow:hidden;">
+          <div style="position:absolute;top:50%;left:20%;width:60px;height:60px;background:var(--color-pink);transform:translate(-50%,-50%) rotate(45deg);"></div>
+        </div>
+        <b>The mosaic diamond</b>
+        <span>Your own Instagram collage device — diagonal photo cells meeting at a pink diamond — rebuilt as a real gallery component below.</span>
+      </div>
+      <div class="asset-card">
+        <div class="demo"><div class="ribbon-divider" style="margin:0;"><span class="line"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 12 L4 6 L4 18 Z"/><path d="M12 12 L20 6 L20 18 Z"/><circle cx="12" cy="12" r="2.2" fill="currentColor"/></svg><span class="line"></span></div></div>
+        <b>The ribbon line</b>
+        <span>A nod to the black bow on every pink box — used as a section divider instead of a generic rule.</span>
+      </div>
+      <div class="asset-card">
+        <div class="demo" style="gap:6px;">
+          <div style="width:20px;height:56px;background:var(--color-pink);border-radius:4px;"></div>
+          <div style="width:20px;height:56px;background:var(--color-coffee);border-radius:4px;margin-left:6px;"></div>
+          <div style="width:20px;height:56px;background:var(--color-black);border-radius:4px;margin-left:6px;"></div>
+        </div>
+        <b>Pink / coffee / black</b>
+        <span>Sampled directly from the awning, the "Martes de Panqués" promo bars, and the ribbon — not from a mood board.</span>
+      </div>
+    </div>
+
+    <h3 style="margin-top:56px;">Color</h3>
+    <div class="swatch-grid">
+      <div class="swatch"><div class="swatch-color" style="background:var(--color-pink)"></div><div class="swatch-label"><b>Rosa Flora</b><span>#D6478A</span><small>Awning, boxes, mosaic diamond</small></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:var(--color-pink-deep)"></div><div class="swatch-label"><b>Rosa profundo</b><span>#AD2F68</span><small>Links, eyebrows, accent text</small></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:var(--color-coffee)"></div><div class="swatch-label"><b>Café Flora</b><span>#8B5A3C</span><small>Sampled from the "Martes de Panqués" promo bars — wordmark, ink, primary button, dark sections</small></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:var(--color-cream)"></div><div class="swatch-label"><b>Crema</b><span>#FBF6EE</span><small>Page background, from interior walls</small></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:var(--color-black)"></div><div class="swatch-label"><b>Negro listón</b><span>#17140F</span><small>Ribbon motif, fine dividers only</small></div></div>
+    </div>
+    <p style="margin-top:14px;font-size:13px;">Every color above was picked with an eyedropper — pink, cream and black from <code>Fachada.jpg</code>/<code>interior.jpg</code>, coffee-brown from the "Martes de Panqués" promo graphic — not chosen from a palette generator. <code>--color-coffee</code> (5.4:1) and <code>--color-pink-deep</code> are verified at 4.5:1+ against cream and white; bright <code>--color-pink</code> is reserved for large fills and decorative marks (mosaic diamond, badges), never small text.</p>
+
+    <h3 style="margin-top:56px;">Logo &amp; typography</h3>
+    <div class="type-specimen">
+      <div class="type-row">
+        <div class="type-sample"><span class="logo-stack" style="align-items:flex-start;"><svg class="flora-mark"><use href="#flora-mark"/></svg><span class="word-block"><span class="word">FLORA</span><span class="sub">PASTEL</span></span></span></div>
+        <div class="type-meta">Redrawn flower mark + Fjalla One · logo, never used as a body/heading font</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample"><div class="h1-sample">El sabor de los<br><em>momentos importantes.</em></div></div>
+        <div class="type-meta">Fraunces 400 · 40px/1.08 · editorial headline/tagline</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample"><div class="h3-sample">Pastel de Nuez</div></div>
+        <div class="type-meta">Manrope 700 · 14px · +0.1em · label-style title</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample"><div class="body-sample">Ingredientes de calidad y el sabor que te hace volver.</div></div>
+        <div class="type-meta">Manrope 400 · 17px/1.65 · body — kept short by rule, see below</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample"><div class="caption-sample">Hecho a mano en Guadalajara</div></div>
+        <div class="type-meta">Manrope 700 · 12px · +0.18em · eyebrow/caption</div>
+      </div>
+    </div>
+    <p style="margin-top:14px;font-size:13.5px;font-weight:600;color:var(--color-coffee);">Copy law: every storytelling section gets one headline + one sentence, maximum. If it needs a second sentence, it's two sections, not one long one.</p>
+
+    <div class="placeholder-note">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 9v4M12 16.5h.01"/><path d="M10.3 3.9 1.8 18.5A1.8 1.8 0 0 0 3.35 21.2h17.3a1.8 1.8 0 0 0 1.55-2.7L13.7 3.9a1.8 1.8 0 0 0-3.4 0Z"/></svg>
+      <div>
+        <b>The flower mark is a placeholder, not a redraw to ship.</b>
+        <p>It was recreated by eye from a photo of the sign for this proposal only — close enough to communicate the idea, not accurate enough to publish. Do not use this SVG in production. Reserve the space in every component (favicon, nav, watermark, mosaic diamond) and drop in the client's official vector logo the moment it's provided; nothing else in the system needs to change when that happens.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top:56px;">Photography — the real bottleneck</h3>
+    <div class="ratio-callout">
+      <div class="bar photo"><b>70%</b><span>Photography</span></div>
+      <div class="bar design"><b>30%</b><span>Design system</span></div>
+    </div>
+    <p style="margin-top:16px;font-size:13.5px;">In this style of brand, the layout can only amplify what the photography already has. Your existing product shots (below, cropped straight from your own Instagram graphic) hold up well at catalogue size — proof the system works today. They don't hold up at full-bleed hero size; that gap is scoped, not vague:</p>
+    <div class="photo-source-grid">
+      <div><img src="crops/nuez.jpg" alt="Nut-crusted cake with cream rosettes, cropped from Flora Pastel's own promotional photo"><div class="cap">used below — catalogue</div></div>
+      <div><img src="crops/frutos-rojos.jpg" alt="Berry-topped cake, cropped from Flora Pastel's own promotional photo"><div class="cap">used below — catalogue</div></div>
+      <div><img src="crops/durazno.jpg" alt="Peach cheesecake, cropped from Flora Pastel's own promotional photo"><div class="cap">used below — catalogue</div></div>
+      <div><img src="crops/red-velvet.jpg" alt="Red velvet cake with blueberries, cropped from Flora Pastel's own promotional photo"><div class="cap">used below — catalogue</div></div>
+      <div><img src="Fachada.jpg" alt="Flora Pastel storefront"><div class="cap">used below — historia</div></div>
+      <div><img src="interior.jpg" alt="Flora Pastel interior"><div class="cap">available — ambiance</div></div>
+    </div>
+    <p style="margin-top:16px;font-size:13.5px;"><strong>Minimum shot list for the hero to work:</strong> 1–2 single-subject "hero" pieces, shot wide (not square), high resolution (2400px+), consistent light direction, on a neutral surface, styled sparse (no busy backdrop) — everything the current square social-media crops weren't shot for. Everything else in this system can ship with what you already have.</p>
+
+    <h4 style="margin-top:32px;font-family:var(--font-body);font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--color-pink-deep);font-weight:700;">A hero that survives "good," not just "extraordinary" — without disguising the food</h4>
+    <p style="margin-top:8px;font-size:13.5px;max-width:760px;">First attempt at this section used a color-wash and a large watermark over the photo — wrong call, reverted. In food, real color sells: mute the gold crust and the cream texture under a magenta gradient and the photo stops reading as something to eat. The actual fix isn't a filter, it's size and isolation — the same untouched catalogue photo, given room to be the only thing on the screen, already reads as a hero. No color shift, no logo on top of the cake:</p>
+    <div class="resilient-demo">
+      <figure>
+        <div class="frame"><img src="crops/nuez.jpg" alt="Catalogue photo of Pastel de Nuez, small, as it appears among other photos"></div>
+        <figcaption><b>En tu feed</b>Competing for attention next to a dozen other posts.</figcaption>
+      </figure>
+      <figure class="big">
+        <div class="frame"><img src="crops/nuez.jpg" alt="Same untreated photo of Pastel de Nuez, shown large and isolated"></div>
+        <figcaption><b>Como hero</b>Exact same file, zero filter — just alone, large, with room around it. The mark and wordmark sit beside it, never on it (see the hero mockups below).</figcaption>
+      </figure>
+    </div>
+    <p style="margin-top:14px;font-size:13px;color:var(--color-ink-muted);">This doesn't remove the need for a proper hero shoot — a dedicated shot will always look better — it just means launch isn't blocked on getting one perfect photo first. The design's job is to get out of the photo's way, not to compensate for it.</p>
+
+    <h3 style="margin-top:56px;">Border radius <span style="font-size:12.5px;color:var(--color-ink-muted);font-weight:400;">— restrained, not pill-everywhere</span></h3>
+    <div class="radius-grid">
+      <div class="radius-box" style="border-radius:3px"><span>xs · 3px</span></div>
+      <div class="radius-box" style="border-radius:8px"><span>sm · 8px</span></div>
+      <div class="radius-box" style="border-radius:14px"><span>md · 14px</span></div>
+      <div class="radius-box" style="border-radius:24px"><span>lg · 24px</span></div>
+      <div class="radius-box" style="border-radius:999px"><span>full</span></div>
+    </div>
+
+    <h3 style="margin-top:56px;">Buttons</h3>
+    <div class="btn-row">
+      <button class="btn btn-primary">Ver la colección</button>
+      <button class="btn btn-secondary">Nuestra historia</button>
+      <button class="btn btn-whatsapp"><svg class="icon" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-3.8-6.8"/><path d="M20.5 3.5 17 7"/></svg>Pedir por WhatsApp</button>
+      <a href="#" class="btn btn-text">Preguntar →</a>
+    </div>
+
+    <h3 style="margin-top:56px;">Catalogue plates <span style="font-size:12.5px;color:var(--color-ink-muted);font-weight:400;">— real photography, no card chrome</span></h3>
+    <div class="card-demo-grid">
+      <div class="plate">
+        <div class="ph-photo"><img src="crops/nuez.jpg" alt="Pastel de Nuez"></div>
+        <div class="body"><h4>Pastel de Nuez</h4><div class="price-row"><span class="price">Desde $650</span><a href="#" class="ask">Preguntar →</a></div></div>
+      </div>
+      <div class="plate">
+        <div class="ph-photo"><img src="crops/frutos-rojos.jpg" alt="Pastel de Frutos Rojos"></div>
+        <div class="body"><h4>Frutos Rojos</h4><div class="price-row"><span class="price">Desde $620</span><a href="#" class="ask">Preguntar →</a></div></div>
+      </div>
+      <div class="plate">
+        <div class="ph-photo"><img src="crops/durazno.jpg" alt="Cheesecake de Durazno"></div>
+        <div class="body"><h4>Cheesecake Durazno</h4><div class="price-row"><span class="price">Desde $580</span><a href="#" class="ask">Preguntar →</a></div></div>
+      </div>
+    </div>
+
+    <h3 style="margin-top:56px;">Flora mosaic <span style="font-size:12.5px;color:var(--color-ink-muted);font-weight:400;">— your own Instagram device, rebuilt as a component</span></h3>
+    <div class="mosaic">
+      <div class="cell c1"><img src="crops/red-velvet.jpg" alt=""></div>
+      <div class="cell c2"><img src="crops/nuez.jpg" alt=""></div>
+      <div class="cell c3"><img src="crops/durazno.jpg" alt=""></div>
+      <div class="diamond"><div class="inner"><svg class="flora-mark"><use href="#flora-mark"/></svg><span class="word">FLORA</span></div></div>
+    </div>
+
+    <div class="ribbon-divider">
+      <span class="line"></span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 12 L4 6 L4 18 Z"/><path d="M12 12 L20 6 L20 18 Z"/><circle cx="12" cy="12" r="2.2" fill="currentColor"/></svg>
+      <span class="line"></span>
+    </div>
+
+    <h3 style="margin-top:0;">Storytelling components</h3>
+    <div class="process-row">
+      <div class="process-step"><span class="num">01</span><h4>Seleccionamos</h4><p>Ingredientes de temporada.</p></div>
+      <div class="process-step"><span class="num">02</span><h4>Horneamos</h4><p>Sin atajos, cada semana.</p></div>
+      <div class="process-step"><span class="num">03</span><h4>Decoramos</h4><p>A mano, pieza por pieza.</p></div>
+      <div class="process-step"><span class="num">04</span><h4>Entregamos</h4><p>Listo para tu ocasión.</p></div>
+    </div>
+    <div class="pull-quote">
+      <span class="mark">&ldquo;</span>
+      <p>Se nota el cuidado en cada detalle.</p>
+      <cite>— Cliente, Guadalajara</cite>
+    </div>
+
+    <h3 style="margin-top:56px;">Navigation <span style="font-size:12.5px;color:var(--color-ink-muted);font-weight:400;">— solid state (see hero mockups for the transparent state)</span></h3>
+    <div class="nav-preview">
+      <span class="logo-inline"><svg class="flora-mark" style="width:24px;height:24px;"><use href="#flora-mark"/></svg><span class="word" style="font-size:16px;">FLORA PASTEL</span></span>
+      <ul>
+        <li><a href="#" class="active">Inicio</a></li>
+        <li><a href="#">Pasteles de Firma</a></li>
+        <li><a href="#">Pasteles Personalizados</a></li>
+        <li><a href="#">Contacto</a></li>
+      </ul>
+      <div class="right">
+        <button class="btn btn-whatsapp" style="padding:10px 18px;font-size:11px;"><svg class="icon" viewBox="0 0 24 24" style="width:14px;height:14px;"><path d="M20 12a8 8 0 1 1-3.8-6.8"/><path d="M20.5 3.5 17 7"/></svg>WhatsApp</button>
+      </div>
+    </div>
+
+    <h3 style="margin-top:56px;">Animation &amp; interaction</h3>
+    <table class="anim-table">
+      <tr><th>Use</th><th>Duration</th><th>Easing</th><th>Notes</th></tr>
+      <tr><td>Header transition</td><td class="mono">300ms</td><td class="mono">ease-out</td><td>Transparent-over-photo → solid cream background, triggered once scroll passes the hero</td></tr>
+      <tr><td>Button / link hover</td><td class="mono">200–240ms</td><td class="mono">ease-out</td><td>Color/border shift + 2px lift, no scale jump</td></tr>
+      <tr><td>Plate hover</td><td class="mono">300–360ms</td><td class="mono">cubic-bezier(.16,1,.3,1)</td><td>Image scales 1.03 inside overflow-hidden frame only</td></tr>
+      <tr><td>Scroll reveal</td><td class="mono">550–700ms</td><td class="mono">cubic-bezier(.16,1,.3,1)</td><td>opacity 0→1 + translateY 20px→0, once per element</td></tr>
+      <tr><td>WhatsApp floating button</td><td class="mono">one-shot, ~600ms on load</td><td class="mono">ease-out</td><td>Single gentle pulse ring on first paint — never looping</td></tr>
+      <tr><td>Reduced motion</td><td class="mono">—</td><td class="mono">—</td><td><code>prefers-reduced-motion: reduce</code> disables transform/parallax, keeps opacity-only fades</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ================= 03 WIREFRAME ================= -->
+<section id="wireframe" class="doc-section">
+  <div class="container">
+    <div class="section-kicker-num">03</div>
+    <div class="section-intro">
+      <h2>Wireframe</h2>
+      <p>Blocks marked <em style="font-family:var(--font-display);font-style:italic;">story</em> are the narrative arc added in v2. Indented/offset blocks below are new in v3 — they mark where the grid is deliberately broken rather than perfectly stacked.</p>
+    </div>
+
+    <div class="wire-tabs">
+      <div class="wire-page">
+        <h4>Home</h4>
+        <div class="wire-frame">
+          <div class="wire-block">Transparent header over hero — mark + wordmark, minimal links</div>
+          <div class="wire-block xtall">Full-bleed hero photo — mark + wordmark + one tagline, off-center, no button</div>
+          <div class="wire-block story offset">Nuestra historia — photo bleeds past edge, headline overlaps it</div>
+          <div class="wire-block story">Cómo hacemos — 4 numbered steps</div>
+          <div class="wire-block">Section head — "Nuestra colección" (one line, no subcopy)</div>
+          <div class="wire-block gridAsym"><span class="big"></span><span style="margin-top:18px;"></span><span></span></div>
+          <div class="wire-block">Flora mosaic — signature diagonal gallery, real photos</div>
+          <div class="wire-block story">Clientes felices — one-line pull-quote</div>
+          <div class="wire-block dark">Custom Cakes teaser — dark band → link</div>
+          <div class="wire-block dark">Final CTA band — WhatsApp</div>
+          <div class="wire-block tall">Footer</div>
+        </div>
+      </div>
+      <div class="wire-page">
+        <h4>Pasteles de Firma</h4>
+        <div class="wire-frame">
+          <div class="wire-block">Header (solid — not a hero page)</div>
+          <div class="wire-block tall">Page hero — one line title, no intro paragraph</div>
+          <div class="wire-block gridAsym"><span class="big"></span><span></span><span style="margin-top:24px;"></span></div>
+          <div class="wire-block gridAsym"><span></span><span style="margin-top:16px;"></span><span class="big"></span></div>
+          <div class="wire-block">Pricing note — one line, "precio final por WhatsApp"</div>
+          <div class="wire-block dark">Persistent WhatsApp CTA band</div>
+          <div class="wire-block tall">Footer</div>
+        </div>
+      </div>
+      <div class="wire-page">
+        <h4>Pasteles Personalizados</h4>
+        <div class="wire-frame">
+          <div class="wire-block">Header</div>
+          <div class="wire-block tall">Page hero — one line title</div>
+          <div class="wire-block">Flora mosaic — past custom work, real photos</div>
+          <div class="wire-block story">Cómo funciona — 3 quick steps</div>
+          <div class="wire-block dark xtall">Single WhatsApp CTA — "Cuéntanos tu idea" (no form)</div>
+          <div class="wire-block tall">Footer</div>
+        </div>
+      </div>
+      <div class="wire-page">
+        <h4>Contacto</h4>
+        <div class="wire-frame">
+          <div class="wire-block">Header</div>
+          <div class="wire-block tall">Page hero — one line title</div>
+          <div class="wire-block">Address · phone · hours — typographic, no boxed card</div>
+          <div class="wire-block xtall">Embedded map (+ fallback directions link)</div>
+          <div class="wire-block">Social links row</div>
+          <div class="wire-block dark">Persistent WhatsApp CTA band</div>
+          <div class="wire-block tall">Footer</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 04 COMPONENT HIERARCHY ================= -->
+<section id="hierarchy" class="doc-section bg-dark">
+  <div class="container">
+    <div class="section-kicker-num">04</div>
+    <div class="section-intro">
+      <h2>Component hierarchy</h2>
+      <p class="muted"><span style="color:#7FC29A;">Green-tinted</span> names are new or renamed in v3. The flower mark is now a first-class component, not a decorative afterthought.</p>
+    </div>
+
+    <div class="tree">
+<ul>
+<li><span class="tag">&lt;Layout&gt;</span>
+  <ul>
+    <li><span class="tag">&lt;SiteHead /&gt;</span> <span class="note">— SEO, OG tags, JSON-LD LocalBusiness, favicon = flower mark</span></li>
+    <li><span class="tag new">&lt;FloraMark /&gt;</span> <span class="note">— shared SVG symbol: nav, footer, watermarks, mosaic diamond, hero</span></li>
+    <li><span class="tag">&lt;Header&gt;</span> <span class="note">transparent over hero, solid on scroll</span>
+      <ul>
+        <li><span class="tag">&lt;Logo /&gt;</span> <span class="note">— &lt;FloraMark/&gt; + FLORA/PASTEL wordmark lockup</span></li>
+        <li><span class="tag">&lt;PrimaryNav /&gt;</span></li>
+        <li><span class="tag">&lt;MobileNavToggle /&gt;</span> → <span class="tag">&lt;MobileNavDrawer /&gt;</span></li>
+      </ul>
+    </li>
+    <li><span class="tag">&lt;main&gt;</span>
+      <ul>
+        <li><span class="note">HomePage —</span> <span class="tag new">&lt;MinimalHero /&gt;</span> <span class="note">(mark + wordmark + tagline only, no CTA)</span>, <span class="tag">&lt;BrandStorySection /&gt;</span> <span class="note">(offset/overlapping layout)</span>, <span class="tag">&lt;ProcessSteps /&gt;</span>, <span class="tag">&lt;CatalogueGrid /&gt;</span> <span class="note">(staggered)</span>, <span class="tag new">&lt;FloraMosaic /&gt;</span>, <span class="tag">&lt;TestimonialQuote /&gt;</span>, <span class="tag">&lt;CustomCakesTeaser /&gt;</span>, <span class="tag">&lt;FinalCTABand /&gt;</span></li>
+        <li><span class="note">SignatureCakesPage —</span> <span class="tag">&lt;PageHero /&gt;</span>, <span class="tag">&lt;CatalogueGrid /&gt;</span></li>
+        <li><span class="note">CustomCakesPage —</span> <span class="tag">&lt;PageHero /&gt;</span>, <span class="tag new">&lt;FloraMosaic /&gt;</span> <span class="note">(gallery mode)</span>, <span class="tag">&lt;ProcessSteps /&gt;</span>, <span class="tag">&lt;SingleWhatsAppCTA /&gt;</span></li>
+        <li><span class="note">ContactPage —</span> <span class="tag">&lt;PageHero /&gt;</span>, <span class="tag">&lt;ContactInfoBlock /&gt;</span>, <span class="tag">&lt;MapEmbed /&gt;</span>, <span class="tag">&lt;SocialLinksRow /&gt;</span></li>
+      </ul>
+    </li>
+    <li><span class="tag">&lt;Footer&gt;</span> <span class="note">— &lt;FloraMark/&gt; watermark at low opacity</span></li>
+    <li><span class="tag">&lt;WhatsAppFloatingButton /&gt;</span></li>
+  </ul>
+</li>
+</ul>
+<div style="margin-top:20px;padding-top:20px;border-top:1px dashed #46527A;color:#8891AB;">
+Shared primitives — <span class="tag">&lt;Button variant="primary|secondary|whatsapp|text" /&gt;</span>, <span class="tag">&lt;CataloguePlate /&gt;</span>, <span class="tag new">&lt;FloraMosaic /&gt;</span> <span class="note">(diagonal clip-path gallery)</span>, <span class="tag new">&lt;RibbonDivider /&gt;</span>, <span class="tag">&lt;PullQuote /&gt;</span>, <span class="tag">&lt;ProcessStep /&gt;</span>, <span class="tag">&lt;Eyebrow /&gt;</span>
+</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 05 MOBILE ================= -->
+<section id="mobile" class="doc-section bg-soft">
+  <div class="container">
+    <div class="section-kicker-num">05</div>
+    <div class="section-intro">
+      <h2>Mobile adaptations</h2>
+      <p>The offset/overlap layouts from the desktop story section had to survive a 320px frame without becoming illegible — that's the real test of "breaking the grid on purpose" rather than by accident.</p>
+    </div>
+
+    <div class="mobile-callouts">
+      <div class="callout"><b>Hero content stays low + left</b>Never re-centers on mobile — the asymmetry is a deliberate choice, not a desktop-only flourish that collapses to "safe" centered text on small screens.</div>
+      <div class="callout"><b>Story overlap, simplified not removed</b>The image-bleed + overlapping text-card pattern survives on mobile as a photo with a card overlapping its bottom-left corner — same idea, fewer pixels.</div>
+      <div class="callout"><b>Catalogue stagger</b>The second plate in the grid drops down slightly even on a 2-column mobile layout — the asymmetry is a system rule, not a desktop-only effect.</div>
+      <div class="callout"><b>WhatsApp FAB</b>Fixed bottom-right, appears once the visitor scrolls past the transparent hero (so it never fights the deliberately empty hero for attention).</div>
+    </div>
+
+    <div class="frame-wrap">
+      <div class="phone-frame">
+        <div class="phone-screen">
+          <div class="phone-notch"></div>
+
+          <div class="hero-mock ph-hero">
+            <div class="bg"><svg class="watermark" viewBox="-60 -62 120 124"><use href="#flora-mark"/></svg></div>
+            <div class="scrim-top"></div>
+            <span class="pending-tag">foto pendiente</span>
+            <div class="t-nav">
+              <svg class="flora-mark" style="width:20px;height:20px;color:#fff;"><use href="#flora-mark"/></svg>
+              <svg class="icon" viewBox="0 0 24 24" style="width:18px;height:18px;color:#fff;"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+            </div>
+            <div class="content on-dark">
+              <span class="word">FLORA</span>
+              <span class="sub">PASTEL</span>
+              <p class="tagline">El sabor de<br>los momentos<br>importantes.</p>
+            </div>
+          </div>
+
+          <div class="ph-story">
+            <div class="img"><img src="Fachada.jpg" alt="Fachada Flora Pastel"></div>
+            <div class="txt">
+              <div class="eyebrow">Nuestra historia</div>
+              <h3>Una cocina pequeña.</h3>
+              <p>El mismo cuidado desde el día uno.</p>
+            </div>
+          </div>
+
+          <div class="ph-section-head">
+            <div class="eyebrow">Nuestra colección</div>
+            <h3>Piezas destacadas</h3>
+          </div>
+          <div class="ph-grid">
+            <div class="item ph-plate"><div class="ph"><img src="crops/nuez.jpg" alt="Pastel de Nuez"></div><b>Pastel de Nuez</b><span>Desde $650</span></div>
+            <div class="item ph-plate"><div class="ph"><img src="crops/frutos-rojos.jpg" alt="Frutos Rojos"></div><b>Frutos Rojos</b><span>Desde $620</span></div>
+          </div>
+
+          <div class="ph-fab"><svg class="icon" viewBox="0 0 24 24" style="stroke:#fff;"><path d="M20 12a8 8 0 1 1-3.8-6.8"/><path d="M20.5 3.5 17 7"/></svg></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 06 DESKTOP ================= -->
+<section id="desktop" class="doc-section">
+  <div class="container">
+    <div class="section-kicker-num">06</div>
+    <div class="section-intro">
+      <h2>Desktop layout</h2>
+      <p>At ≥1024px the hero gets a full-height, chrome-free moment, and the story section's photo-bleed + overlapping text card becomes the clearest single proof that this system doesn't default to a perfectly balanced grid.</p>
+    </div>
+
+    <div class="desktop-callouts">
+      <div class="callout"><b>Hero</b>92vh photo, transparent nav, mark + wordmark + tagline positioned low-left — never centered, never boxed.</div>
+      <div class="callout"><b>Story section</b>Photo is 56% width pinned right and bleeds to the container edge; the copy card overlaps its top-left corner, breaking the grid on purpose.</div>
+      <div class="callout"><b>Catalogue stagger</b>Middle plate drops 52px below its neighbors — an asymmetric spread, not a uniform 3-up ecommerce grid.</div>
+    </div>
+
+    <div class="browser-frame">
+      <div class="browser-bar">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="url">florapastel.mx</span>
+      </div>
+      <div class="browser-body">
+
+        <div class="hero-mock dsk-hero">
+          <div class="bg"><svg class="watermark" viewBox="-60 -62 120 124"><use href="#flora-mark"/></svg></div>
+          <div class="scrim-top"></div>
+          <span class="pending-tag">fotografía de hero — pendiente shoot dedicado</span>
+          <div class="t-nav">
+            <svg class="flora-mark" style="width:26px;height:26px;color:#fff;"><use href="#flora-mark"/></svg>
+            <ul>
+              <li><a href="#">Inicio</a></li>
+              <li><a href="#">Pasteles de Firma</a></li>
+              <li><a href="#">Pasteles Personalizados</a></li>
+              <li><a href="#">Contacto</a></li>
+            </ul>
+          </div>
+          <div class="content on-dark">
+            <span class="word">FLORA</span>
+            <span class="sub">PASTEL</span>
+            <p class="tagline">El sabor de los<br>momentos importantes.</p>
+          </div>
+          <div class="scroll-cue">Desliza ↓</div>
+        </div>
+
+        <div class="dsk-nav-solid">
+          <span class="logo-inline"><svg class="flora-mark" style="width:22px;height:22px;"><use href="#flora-mark"/></svg><span class="word" style="font-size:15px;">FLORA PASTEL</span></span>
+          <ul>
+            <li><a href="#" class="active">Inicio</a></li>
+            <li><a href="#">Pasteles de Firma</a></li>
+            <li><a href="#">Pasteles Personalizados</a></li>
+            <li><a href="#">Contacto</a></li>
+          </ul>
+          <button class="btn btn-whatsapp" style="padding:9px 18px;font-size:10.5px;"><svg class="icon" viewBox="0 0 24 24" style="width:13px;height:13px;"><path d="M20 12a8 8 0 1 1-3.8-6.8"/><path d="M20.5 3.5 17 7"/></svg>WhatsApp</button>
+        </div>
+
+        <div class="dsk-story">
+          <div class="img"><img src="Fachada.jpg" alt="Fachada de Flora Pastel"></div>
+          <div class="txt">
+            <div class="eyebrow">Nuestra historia</div>
+            <h2>Una cocina pequeña.</h2>
+            <p>El mismo cuidado en cada pastel, desde el primer día.</p>
+            <a href="#" class="btn btn-text">Conoce más →</a>
+          </div>
+        </div>
+
+        <div class="dsk-section-head">
+          <div class="eyebrow">Nuestra colección</div>
+          <h2>Piezas destacadas</h2>
+        </div>
+        <div class="dsk-grid3">
+          <div class="plate">
+            <div class="ph-photo"><img src="crops/nuez.jpg" alt="Pastel de Nuez"></div>
+            <div class="body"><h4>Pastel de Nuez</h4><div class="price-row"><span class="price">Desde $650</span><a href="#" class="ask">Preguntar →</a></div></div>
+          </div>
+          <div class="plate">
+            <div class="ph-photo"><img src="crops/frutos-rojos.jpg" alt="Frutos Rojos"></div>
+            <div class="body"><h4>Frutos Rojos</h4><div class="price-row"><span class="price">Desde $620</span><a href="#" class="ask">Preguntar →</a></div></div>
+          </div>
+          <div class="plate">
+            <div class="ph-photo"><img src="crops/durazno.jpg" alt="Cheesecake de Durazno"></div>
+            <div class="body"><h4>Cheesecake Durazno</h4><div class="price-row"><span class="price">Desde $580</span><a href="#" class="ask">Preguntar →</a></div></div>
+          </div>
+        </div>
+
+        <div class="dsk-footer">
+          <div>
+            <span class="logo-inline on-dark"><svg class="flora-mark" style="width:22px;height:22px;"><use href="#flora-mark"/></svg><span class="word" style="font-size:16px;">FLORA PASTEL</span></span>
+            <small style="display:block;margin-top:8px;">Guadalajara, Jalisco, México</small>
+          </div>
+          <ul>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Pasteles de Firma</a></li>
+            <li><a href="#">Pasteles Personalizados</a></li>
+            <li><a href="#">Contacto</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="doc-footer">
+  Flora Pastel — Design Proposal v3 (internal/technical) · grounded in <code>Fachada.jpg · interior.jpg · 354157613…png</code> (your real storefront &amp; photography) · built with UI/UX Pro Max<br>
+  <a href="propuesta-flora-pastel.html" style="color:var(--color-pink-deep);font-weight:600;">Ver la versión corta para cliente →</a>
+</footer>
+
+</body>
+</html>
