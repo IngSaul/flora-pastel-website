@@ -1,0 +1,22 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  product: CollectionEntry<"products">["data"];
+  categoryLabel: string;
+}
+
+const { product, categoryLabel } = Astro.props;
+---
+
+<article class="product-card">
+  <img
+    class="product-card__image"
+    src={`/images/products/${product.images[0]}`}
+    alt={product.name}
+    loading="lazy"
+  />
+  <p class="product-card__category">{categoryLabel}</p>
+  <h3 class="product-card__name">{product.name}</h3>
+  <p class="product-card__description">{product.description}</p>
+</article>

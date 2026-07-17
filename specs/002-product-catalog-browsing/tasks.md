@@ -66,14 +66,14 @@ Single static Astro project at the repository root (per `plan.md`): `src/`, `pub
 
 ### Tests for User Story 1
 
-- [ ] T016 [P] [US1] Write the E2E test for category browsing (all 6 categories present, category nav jumps to the right section, each product shows name/photo/description) in `tests/e2e/catalog-browsing.spec.ts`, per `quickstart.md`'s US1 walkthrough — must fail before implementation
+- [x] T016 [P] [US1] Write the E2E test for category browsing (all 6 categories present, category nav jumps to the right section, each product shows name/photo/description) in `tests/e2e/catalog-browsing.spec.ts`, per `quickstart.md`'s US1 walkthrough — must fail before implementation
 
 ### Implementation for User Story 1
 
-- [ ] T017 [P] [US1] Create `ProductCard.astro` (renders name, photo, description, category) in `src/components/catalog/ProductCard.astro` — FR-004
-- [ ] T018 [US1] Create `CategorySection.astro` (renders a category heading with an anchor `id` and its `ProductCard`s) in `src/components/catalog/CategorySection.astro` — FR-001, FR-003 (depends on T017)
-- [ ] T019 [US1] Create `CategoryNav.astro` (anchor links to each category's section `id`, sourced from `src/content/categories.ts`) in `src/components/catalog/CategoryNav.astro` — FR-002 (depends on T005)
-- [ ] T020 [US1] Create the catalog entry page `src/pages/catalogo/index.astro`: query all products via the Content Collection, group them by category, and render `CategoryNav` followed by one `CategorySection` per category — FR-001, FR-002, FR-003 (depends on T018, T019)
+- [x] T017 [P] [US1] Create `ProductCard.astro` (renders name, photo, description, category) in `src/components/catalog/ProductCard.astro` — FR-004
+- [x] T018 [US1] Create `CategorySection.astro` (renders a category heading with an anchor `id` and its `ProductCard`s) in `src/components/catalog/CategorySection.astro` — FR-001, FR-003 (depends on T017)
+- [x] T019 [US1] Create `CategoryNav.astro` (anchor links to each category's section `id`, sourced from `src/content/categories.ts`) in `src/components/catalog/CategoryNav.astro` — FR-002 (depends on T005)
+- [x] T020 [US1] Create the catalog entry page `src/pages/catalogo/index.astro`: query all products via the Content Collection, group them by category, and render `CategoryNav` followed by one `CategorySection` per category — FR-001, FR-002, FR-003 (depends on T018, T019)
 
 **Checkpoint**: User Story 1 is fully functional and testable independently — the catalog can be browsed category by category.
 

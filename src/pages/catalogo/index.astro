@@ -1,0 +1,26 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CategoryNav from "../../components/catalog/CategoryNav.astro";
+import CategorySection from "../../components/catalog/CategorySection.astro";
+import { categories } from "../../content/categories";
+
+const allProducts = await getCollection("products");
+---
+
+<BaseLayout
+  title="Catálogo — Flora Pastel"
+  description="Explora el catálogo completo de cheesecakes, gelatinas, panqués, pasteles, postres y productos sobre pedido de Flora Pastel."
+>
+  <CategoryNav />
+  {
+    categories.map((category) => (
+      <CategorySection
+        category={category}
+        products={allProducts.filter(
+          (product) => product.data.category === category.id,
+        )}
+      />
+    ))
+  }
+</BaseLayout>

@@ -1,0 +1,15 @@
+---
+import { categories } from "../../content/categories";
+---
+
+<nav class="category-nav" aria-label="Categorías del catálogo">
+  <ul>
+    {
+      categories.map((category) => (
+        <li>
+          <a href={`#${category.id}`}>{category.label}</a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
