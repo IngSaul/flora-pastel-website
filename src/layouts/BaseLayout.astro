@@ -1,21 +1,34 @@
 ---
 import "../styles/tokens.css";
+import SiteNav from "../components/site/SiteNav.astro";
+import SiteFooter from "../components/site/SiteFooter.astro";
+import Seo from "../components/site/Seo.astro";
 
 interface Props {
   title: string;
   description?: string;
+  ogImage?: string;
+  path?: string;
 }
 
-const { title, description = "Pastelería artesanal en Guadalajara." } =
-  Astro.props;
+const {
+  title,
+  description = "Pastelería artesanal en Guadalajara.",
+  ogImage = "/images/og-default.jpg",
+  path = Astro.url.pathname,
+} = Astro.props;
 ---
 
 <html lang="es">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={description} />
-    <title>{title}</title>
+    <Seo
+      title={title}
+      description={description}
+      ogImage={ogImage}
+      path={path}
+    />
     <link
       rel="icon"
       type="image/svg+xml"
@@ -38,14 +51,15 @@ const { title, description = "Pastelería artesanal en Guadalajara." } =
   </head>
   <body>
     <header class="site-header">
-      <nav><a href="/" class="wordmark">Flora Pastel</a></nav>
+      <div class="site-header__inner">
+        <a href="/" class="wordmark">Flora Pastel</a>
+        <SiteNav currentPath={path} />
+      </div>
     </header>
     <main class="container">
       <slot />
     </main>
-    <footer class="site-footer">
-      <p>&copy; {new Date().getFullYear()} Flora Pastel</p>
-    </footer>
+    <SiteFooter />
   </body>
 </html>
 
@@ -120,14 +134,21 @@ const { title, description = "Pastelería artesanal en Guadalajara." } =
 
 <style>
   .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
     background: var(--color-cream);
     border-bottom: 1px solid var(--color-border);
   }
 
-  .site-header nav {
+  .site-header__inner {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 clamp(20px, 5vw, 48px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
   }
 
   .wordmark {
@@ -140,13 +161,5 @@ const { title, description = "Pastelería artesanal en Guadalajara." } =
     letter-spacing: 0.02em;
     color: var(--color-coffee);
     text-decoration: none;
-  }
-
-  .site-footer {
-    margin-top: var(--space-8);
-    padding: var(--space-6) clamp(20px, 5vw, 48px);
-    text-align: center;
-    color: var(--color-ink-muted);
-    font-size: 13px;
   }
 </style>

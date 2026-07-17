@@ -1,0 +1,64 @@
+---
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = "" } = Astro.props;
+
+const links = [
+  { href: "/", label: "Inicio" },
+  { href: "/catalogo", label: "Catálogo" },
+  { href: "/pasteles-personalizados", label: "Personalizados" },
+  { href: "/contacto", label: "Contacto" },
+];
+---
+
+<nav class="site-nav" aria-label="Navegación principal">
+  <ul>
+    {
+      links.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            aria-current={currentPath === link.href ? "page" : undefined}
+          >
+            {link.label}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+
+<style>
+  .site-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .site-nav a {
+    display: inline-block;
+    padding: var(--space-2) var(--space-3);
+    min-height: 24px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-ink-muted);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+  }
+
+  .site-nav a:hover {
+    color: var(--color-pink-deep);
+  }
+
+  .site-nav a[aria-current="page"] {
+    color: var(--color-ink);
+    border-color: var(--color-pink-deep);
+  }
+</style>

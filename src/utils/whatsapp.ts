@@ -1,5 +1,9 @@
 const WHATSAPP_NUMBER = "523319027014";
 
+export function buildGeneralWhatsAppLink(message: string): string {
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+}
+
 interface WhatsAppProduct {
   name: string;
 }
@@ -23,5 +27,5 @@ export function buildWhatsAppLink(
     message = `Hola, me interesa el producto "${product.name}" que vi en su catálogo.`;
   }
 
-  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+  return buildGeneralWhatsAppLink(message);
 }

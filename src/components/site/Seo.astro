@@ -1,0 +1,33 @@
+---
+import { buildAbsoluteUrl, buildLocalBusinessJsonLd } from "../../utils/seo";
+
+interface Props {
+  title: string;
+  description: string;
+  ogImage: string;
+  path: string;
+}
+
+const { title, description, ogImage, path } = Astro.props;
+
+const canonicalUrl = buildAbsoluteUrl(Astro.site, path);
+const absoluteOgImage = buildAbsoluteUrl(Astro.site, ogImage);
+const jsonLd = buildLocalBusinessJsonLd(Astro.site?.toString() ?? canonicalUrl);
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalUrl} />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={absoluteOgImage} />
+<meta property="og:url" content={canonicalUrl} />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={absoluteOgImage} />
+
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

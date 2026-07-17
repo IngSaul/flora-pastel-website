@@ -40,13 +40,13 @@ Single static Astro project at the repository root (unchanged from spec 002): `s
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete
 
-- [ ] T003 [P] Define the Business Profile in `src/content/business.ts` per `contracts/business-profile-contract.md`, transcribed from `cliente/datos.md`
-- [ ] T004 Add the `customCakes` Content Collection schema (Zod) to `src/content.config.ts` per `contracts/custom-cake-content-schema.md`
-- [ ] T005 [P] Create `SiteNav.astro` (links to Home, Catálogo, Personalizados, Contacto) in `src/components/site/SiteNav.astro` — FR-001, FR-003
-- [ ] T006 [P] Create `SiteFooter.astro` (business name, quick links to all four pages, social links, WhatsApp shortcut) in `src/components/site/SiteFooter.astro` — FR-002 (depends on T003)
-- [ ] T007 [P] Create `src/utils/seo.ts` (LocalBusiness JSON-LD builder, absolute OG-image URL helper) — FR-018 (depends on T003)
-- [ ] T008 [P] Create `Seo.astro` (title/description/canonical/OG tags + LocalBusiness JSON-LD) in `src/components/site/Seo.astro` per `contracts/seo-metadata-contract.md` — FR-016, FR-017, FR-018 (depends on T007)
-- [ ] T009 Retrofit `src/layouts/BaseLayout.astro` to mount `SiteNav`/`SiteFooter`/`Seo` in place of the current inline header/footer stub, extending its props (`ogImage`, `path`) per the SEO contract — FR-001, FR-002 (depends on T005, T006, T008); this also brings the site-wide nav/footer to the existing `/catalogo` page with no catalog-specific changes
+- [x] T003 [P] Define the Business Profile in `src/content/business.ts` per `contracts/business-profile-contract.md`, transcribed from `cliente/datos.md` — `story` is a factual placeholder only; real brand-story copy is still business-supplied and pending
+- [x] T004 Add the `customCakes` Content Collection schema (Zod) to `src/content.config.ts` per `contracts/custom-cake-content-schema.md`
+- [x] T005 [P] Create `SiteNav.astro` (links to Home, Catálogo, Personalizados, Contacto) in `src/components/site/SiteNav.astro` — FR-001, FR-003
+- [x] T006 [P] Create `SiteFooter.astro` (business name, quick links to all four pages, social links, WhatsApp shortcut) in `src/components/site/SiteFooter.astro` — FR-002 (depends on T003)
+- [x] T007 [P] Create `src/utils/seo.ts` (LocalBusiness JSON-LD builder, absolute OG-image URL helper) — FR-018 (depends on T003)
+- [x] T008 [P] Create `Seo.astro` (title/description/canonical/OG tags + LocalBusiness JSON-LD) in `src/components/site/Seo.astro` per `contracts/seo-metadata-contract.md` — FR-016, FR-017, FR-018 (depends on T007)
+- [x] T009 Retrofit `src/layouts/BaseLayout.astro` to mount `SiteNav`/`SiteFooter`/`Seo` in place of the current inline header/footer stub, extending its props (`ogImage`, `path`) per the SEO contract — FR-001, FR-002 (depends on T005, T006, T008); this also brings the site-wide nav/footer to the existing `/catalogo` page with no catalog-specific changes — `ogImage`/`path` default (`/images/og-default.jpg`, `Astro.url.pathname`) so no per-page changes were required; also adjusted `/catalogo`'s sticky category nav offset to stack under the new sticky site header
 
 **Checkpoint**: Business data, content schema, and site-wide chrome are in place. User story implementation can now begin.
 

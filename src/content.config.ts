@@ -29,4 +29,16 @@ const products = defineCollection({
     }),
 });
 
-export const collections = { products };
+const customCakes = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/custom-cakes" }),
+  schema: ({ image }) =>
+    z.object({
+      slug: z.string().min(1),
+      title: z.string().min(1),
+      description: z.string().min(1),
+      images: z.array(image()).min(1),
+      tags: z.array(z.string().min(1)).min(1),
+    }),
+});
+
+export const collections = { products, customCakes };
