@@ -107,13 +107,13 @@ Single static Astro project at the repository root (per `plan.md`): `src/`, `pub
 
 ### Tests for User Story 3
 
-- [ ] T025 [P] [US3] Write the E2E test confirming the Sobre Pedido category and its products show the lead-time notice and the CTA message reflects it, in `tests/e2e/sobre-pedido.spec.ts`, per `quickstart.md`'s US3 walkthrough — must fail before implementation
+- [x] T025 [P] [US3] Write the E2E test confirming the Sobre Pedido category and its products show the lead-time notice and the CTA message reflects it, in `tests/e2e/sobre-pedido.spec.ts`, per `quickstart.md`'s US3 walkthrough — must fail before implementation
 
 ### Implementation for User Story 3
 
-- [ ] T026 [P] [US3] Create `SobrePedidoNotice.astro` (renders a category's `leadTimeNote`) in `src/components/catalog/SobrePedidoNotice.astro` — FR-008, FR-009
-- [ ] T027 [US3] Render `SobrePedidoNotice` inside `CategorySection.astro` (category-level) and inside each of its `ProductCard`s when the category is `sobre-pedido` — FR-008, FR-009 (depends on T018, T026)
-- [ ] T028 [US3] Pass an `isSobrePedido` flag into `WhatsAppCta.astro` for Sobre Pedido products so `buildWhatsAppLink()` uses the Sobre Pedido message template — FR-011 (depends on T023, T007)
+- [x] T026 [P] [US3] Create `SobrePedidoNotice.astro` (renders a category's `leadTimeNote`) in `src/components/catalog/SobrePedidoNotice.astro` — FR-008, FR-009
+- [x] T027 [US3] Render `SobrePedidoNotice` inside `CategorySection.astro` (category-level) and inside each of its `ProductCard`s when the category is `sobre-pedido` — FR-008, FR-009 (depends on T018, T026)
+- [x] T028 [US3] Pass an `isSobrePedido` flag into `WhatsAppCta.astro` for Sobre Pedido products so `buildWhatsAppLink()` uses the Sobre Pedido message template — FR-011 (depends on T023, T007)
 
 **Checkpoint**: All three user stories are independently functional — the catalog is browsable, comparable, and made-to-order expectations are clear.
 

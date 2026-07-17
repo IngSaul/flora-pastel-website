@@ -2,6 +2,7 @@
 import type { CollectionEntry } from "astro:content";
 import type { Category } from "../../content/categories";
 import ProductCard from "./ProductCard.astro";
+import SobrePedidoNotice from "./SobrePedidoNotice.astro";
 
 interface Props {
   category: Category;
@@ -13,10 +14,15 @@ const { category, products } = Astro.props;
 
 <section id={category.id} class="category-section">
   <h2>{category.label}</h2>
+  {
+    category.leadTimeNote && (
+      <SobrePedidoNotice leadTimeNote={category.leadTimeNote} />
+    )
+  }
   <div class="category-section__grid">
     {
       products.map((product) => (
-        <ProductCard product={product.data} categoryLabel={category.label} />
+        <ProductCard product={product.data} category={category} />
       ))
     }
   </div>

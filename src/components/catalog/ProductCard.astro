@@ -1,14 +1,16 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import type { Category } from "../../content/categories";
 import PresentationList from "./PresentationList.astro";
+import SobrePedidoNotice from "./SobrePedidoNotice.astro";
 
 interface Props {
   product: CollectionEntry<"products">["data"];
-  categoryLabel: string;
-  isSobrePedido?: boolean;
+  category: Category;
 }
 
-const { product, categoryLabel, isSobrePedido = false } = Astro.props;
+const { product, category } = Astro.props;
+const isSobrePedido = category.id === "sobre-pedido";
 ---
 
 <article class="product-card">
@@ -20,9 +22,14 @@ const { product, categoryLabel, isSobrePedido = false } = Astro.props;
     height="1500"
     loading="lazy"
   />
-  <p class="product-card__category">{categoryLabel}</p>
+  <p class="product-card__category">{category.label}</p>
   <h3 class="product-card__name">{product.name}</h3>
   <p class="product-card__description">{product.description}</p>
+  {
+    isSobrePedido && category.leadTimeNote && (
+      <SobrePedidoNotice leadTimeNote={category.leadTimeNote} />
+    )
+  }
   <PresentationList
     product={product}
     presentations={product.presentations}
