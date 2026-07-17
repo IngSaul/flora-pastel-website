@@ -29,10 +29,10 @@ Single static Astro project at the repository root (per `plan.md`): `src/`, `pub
 
 **Purpose**: Project initialization and basic structure
 
-- [ ] T001 Create the Astro project shell (`package.json`, `astro.config.mjs`, `tsconfig.json`) at the repository root, static output mode, per `plan.md`'s Project Structure
-- [ ] T002 [P] Configure linting and formatting (ESLint + Prettier, or equivalent) per Constitution IV ("Lint passes", "Formatter passes")
-- [ ] T003 [P] Install and configure testing tooling: Playwright (`playwright.config.ts`), `@axe-core/playwright`, and Lighthouse CI config, per `plan.md`'s Testing decision
-- [ ] T004 [P] Port design tokens (colors, fonts, spacing, radii, shadows) from `references/design-proposal.html` into `src/styles/tokens.css`
+- [x] T001 Create the Astro project shell (`package.json`, `astro.config.mjs`, `tsconfig.json`) at the repository root, static output mode, per `plan.md`'s Project Structure
+- [x] T002 [P] Configure linting and formatting (ESLint + Prettier, or equivalent) per Constitution IV ("Lint passes", "Formatter passes")
+- [x] T003 [P] Install and configure testing tooling: Playwright (`playwright.config.ts`), `@axe-core/playwright`, and Lighthouse CI config, per `plan.md`'s Testing decision
+- [x] T004 [P] Port design tokens (colors, fonts, spacing, radii, shadows) from `references/design-proposal.html` into `src/styles/tokens.css`
 
 ---
 
@@ -42,17 +42,17 @@ Single static Astro project at the repository root (per `plan.md`): `src/`, `pub
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete
 
-- [ ] T005 [P] Define the fixed Category data (`id`, `label`, `leadTimeNote`) for the 6 business categories in `src/content/categories.ts`, per `data-model.md`'s Category entity (only `sobre-pedido` has a non-null `leadTimeNote`)
-- [ ] T006 Define the Product/Presentation Content Collection schema (Zod) in `src/content/config.ts` per `contracts/product-content-schema.md`, referencing the category ids from T005 (depends on T005)
-- [ ] T007 [P] Implement `buildWhatsAppLink(product, presentation?, isSobrePedido?)` in `src/utils/whatsapp.ts`, covering all three message templates (standard, with-presentation, Sobre Pedido) from `contracts/whatsapp-cta-contract.md`
-- [ ] T008 [P] Create the shared page shell `src/layouts/BaseLayout.astro` (head/meta, minimal nav/footer stubs)
-- [ ] T009 [P] Copy and optimize product photography from `cliente/images/products` into `public/images/products`
-- [ ] T010 [P] Author Cheesecakes product entries (oreo, frutos-rojos, mandarina, manzana, cajeta) as files in `src/content/products/`, transcribed from `cliente/productos.md` (depends on T006)
-- [ ] T011 [P] Author Gelatinas product entries (fresa, durazno, mosaico) as files in `src/content/products/`, transcribed from `cliente/productos.md` (depends on T006)
-- [ ] T012 [P] Author Panqués product entries (rosca-de-naranja, barra-de-naranja, panque-individual) as files in `src/content/products/`, transcribed from `cliente/productos.md` (depends on T006)
-- [ ] T013 [P] Author Pasteles product entries (tres-leches, cafe, hersheys, chorreado-de-chocolate, ferrero, red-velvet, vainilla, zanahoria) as files in `src/content/products/`, transcribed from `cliente/productos.md` (depends on T006)
-- [ ] T014 [P] Author Postres product entries (cajetoso-de-elote, mostachon-de-frutos-rojos) as files in `src/content/products/`, transcribed from `cliente/productos.md` (depends on T006)
-- [ ] T015 [P] Author Sobre Pedido product entries (rosca-de-nuez-sin-azucar, mostachon-de-platano, panque-de-platano) as files in `src/content/products/`, transcribed from `cliente/productos.md` (depends on T006)
+- [x] T005 [P] Define the fixed Category data (`id`, `label`, `leadTimeNote`) for the 6 business categories in `src/content/categories.ts`, per `data-model.md`'s Category entity (only `sobre-pedido` has a non-null `leadTimeNote`)
+- [x] T006 Define the Product/Presentation Content Collection schema (Zod) in `src/content.config.ts` per `contracts/product-content-schema.md`, referencing the category ids from T005 (depends on T005) — path is `src/content.config.ts`, not `src/content/config.ts`, per Astro 7's Content Layer API requirements
+- [x] T007 [P] Implement `buildWhatsAppLink(product, presentation?, isSobrePedido?)` in `src/utils/whatsapp.ts`, covering all three message templates (standard, with-presentation, Sobre Pedido) from `contracts/whatsapp-cta-contract.md`
+- [x] T008 [P] Create the shared page shell `src/layouts/BaseLayout.astro` (head/meta, minimal nav/footer stubs)
+- [x] T009 [P] Copy and optimize product photography from `cliente/images/products` into `public/images/products`
+- [x] T010 [P] Author Cheesecakes product entries (oreo, frutos-rojos, mandarina, manzana, cajeta) as files in `src/content/products/`, transcribed from `cliente/productos.md` (depends on T006)
+- [x] T011 [P] Author Gelatinas product entries (fresa, durazno, mosaico) as files in `src/content/products/`, transcribed from `cliente/productos.md` (depends on T006)
+- [x] T012 [P] Author Panqués product entries (rosca-de-naranja, barra-de-naranja, panque-individual) as files in `src/content/products/`, transcribed from `cliente/productos.md` (depends on T006)
+- [x] T013 [P] Author Pasteles product entries (tres-leches, cafe, hersheys, chorreado-de-chocolate, ferrero, red-velvet, vainilla, zanahoria) as files in `src/content/products/`, transcribed from `cliente/productos.md` (depends on T006)
+- [x] T014 [P] Author Postres product entries (cajetoso-de-elote, mostachon-de-frutos-rojos) as files in `src/content/products/`, transcribed from `cliente/productos.md` (depends on T006)
+- [x] T015 [P] Author Sobre Pedido product entries (rosca-de-nuez-sin-azucar, mostachon-de-platano, panque-de-platano) as files in `src/content/products/`, transcribed from `cliente/productos.md` (depends on T006)
 
 **Checkpoint**: Foundation ready — category data, product schema, all product content, the WhatsApp utility, base layout, and product images are in place. User story implementation can now begin.
 
