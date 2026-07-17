@@ -1,0 +1,36 @@
+---
+import type { CollectionEntry } from "astro:content";
+import WhatsAppCta from "../shared/WhatsAppCta.astro";
+
+type Presentation =
+  CollectionEntry<"products">["data"]["presentations"][number];
+
+interface Props {
+  product: CollectionEntry<"products">["data"];
+  presentations: Presentation[];
+  isSobrePedido?: boolean;
+}
+
+const { product, presentations, isSobrePedido = false } = Astro.props;
+---
+
+<ul class="presentation-list">
+  {
+    presentations.map((presentation) => (
+      <li class="presentation-list__item">
+        <span class="presentation-list__label">{presentation.label}</span>
+        {presentation.portionDescription && (
+          <span class="presentation-list__portion">
+            {presentation.portionDescription}
+          </span>
+        )}
+        <span class="presentation-list__price">${presentation.priceMXN}</span>
+        <WhatsAppCta
+          product={product}
+          presentation={presentation}
+          isSobrePedido={isSobrePedido}
+        />
+      </li>
+    ))
+  }
+</ul>

@@ -1,12 +1,14 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import PresentationList from "./PresentationList.astro";
 
 interface Props {
   product: CollectionEntry<"products">["data"];
   categoryLabel: string;
+  isSobrePedido?: boolean;
 }
 
-const { product, categoryLabel } = Astro.props;
+const { product, categoryLabel, isSobrePedido = false } = Astro.props;
 ---
 
 <article class="product-card">
@@ -14,9 +16,24 @@ const { product, categoryLabel } = Astro.props;
     class="product-card__image"
     src={`/images/products/${product.images[0]}`}
     alt={product.name}
+    width="1200"
+    height="1500"
     loading="lazy"
   />
   <p class="product-card__category">{categoryLabel}</p>
   <h3 class="product-card__name">{product.name}</h3>
   <p class="product-card__description">{product.description}</p>
+  <PresentationList
+    product={product}
+    presentations={product.presentations}
+    isSobrePedido={isSobrePedido}
+  />
 </article>
+
+<style>
+  .product-card__image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+</style>

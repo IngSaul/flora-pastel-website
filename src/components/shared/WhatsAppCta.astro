@@ -1,0 +1,16 @@
+---
+import { buildWhatsAppLink } from "../../utils/whatsapp";
+
+interface Props {
+  product: { name: string };
+  presentation?: { label: string };
+  isSobrePedido?: boolean;
+}
+
+const { product, presentation, isSobrePedido = false } = Astro.props;
+const href = buildWhatsAppLink(product, presentation, isSobrePedido);
+---
+
+<a class="whatsapp-cta" href={href} target="_blank" rel="noopener noreferrer">
+  Preguntar por WhatsApp
+</a>

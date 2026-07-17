@@ -87,13 +87,13 @@ Single static Astro project at the repository root (per `plan.md`): `src/`, `pub
 
 ### Tests for User Story 2
 
-- [ ] T021 [P] [US2] Write the E2E test for presentation/price display and WhatsApp CTA message content in `tests/e2e/presentation-pricing.spec.ts`, per `quickstart.md`'s US2 walkthrough — must fail before implementation
+- [x] T021 [P] [US2] Write the E2E test for presentation/price display and WhatsApp CTA message content in `tests/e2e/presentation-pricing.spec.ts`, per `quickstart.md`'s US2 walkthrough — must fail before implementation
 
 ### Implementation for User Story 2
 
-- [ ] T022 [P] [US2] Create `PresentationList.astro` (renders each presentation's `label`, `portionDescription`, and `priceMXN`) in `src/components/catalog/PresentationList.astro` — FR-005, FR-006, FR-007
-- [ ] T023 [P] [US2] Create `WhatsAppCta.astro` (renders a link built via `buildWhatsAppLink(product, presentation?)`) in `src/components/shared/WhatsAppCta.astro` — FR-010, FR-011 (depends on T007)
-- [ ] T024 [US2] Integrate `PresentationList` and `WhatsAppCta` into `ProductCard.astro` so every product shows all its presentations, each with its own CTA — FR-005, FR-010 (depends on T017, T022, T023)
+- [x] T022 [P] [US2] Create `PresentationList.astro` (renders each presentation's `label`, `portionDescription`, and `priceMXN`) in `src/components/catalog/PresentationList.astro` — FR-005, FR-006, FR-007
+- [x] T023 [P] [US2] Create `WhatsAppCta.astro` (renders a link built via `buildWhatsAppLink(product, presentation?)`) in `src/components/shared/WhatsAppCta.astro` — FR-010, FR-011 (depends on T007)
+- [x] T024 [US2] Integrate `PresentationList` and `WhatsAppCta` into `ProductCard.astro` so every product shows all its presentations, each with its own CTA — FR-005, FR-010 (depends on T017, T022, T023)
 
 **Checkpoint**: User Stories 1 AND 2 both work independently — the catalog is browsable and every product's pricing is comparable.
 
