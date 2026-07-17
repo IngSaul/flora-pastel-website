@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://florapastel.com/sitemap-index.xml

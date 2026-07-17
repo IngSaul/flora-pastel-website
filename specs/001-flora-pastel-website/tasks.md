@@ -29,8 +29,8 @@ Single static Astro project at the repository root (unchanged from spec 002): `s
 
 **Purpose**: Site-wide infrastructure this feature adds on top of the existing spec 002 project
 
-- [ ] T001 [P] Install and configure `@astrojs/sitemap` in `astro.config.mjs` per `research.md`'s Sitemap decision — FR-019
-- [ ] T002 [P] Create `public/robots.txt` referencing the generated sitemap — FR-020
+- [x] T001 [P] Install and configure `@astrojs/sitemap` in `astro.config.mjs` per `research.md`'s Sitemap decision — FR-019 — `site` set to a placeholder production domain (`https://florapastel.com`) pending the real domain
+- [x] T002 [P] Create `public/robots.txt` referencing the generated sitemap — FR-020
 
 ---
 

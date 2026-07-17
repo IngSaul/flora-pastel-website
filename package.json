@@ -15,6 +15,7 @@
     "lighthouse": "lhci autorun"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.7.3",
     "astro": "^7.1.0"
   },
   "devDependencies": {
