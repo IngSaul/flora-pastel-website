@@ -14,3 +14,28 @@ const href = buildWhatsAppLink(product, presentation, isSobrePedido);
 <a class="whatsapp-cta" href={href} target="_blank" rel="noopener noreferrer">
   Preguntar por WhatsApp
 </a>
+
+<style>
+  .whatsapp-cta {
+    display: inline-flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    margin-top: var(--space-1);
+    padding: var(--space-2) var(--space-4);
+    min-height: 24px;
+    border-radius: var(--radius-full);
+    background: var(--color-whatsapp);
+    color: var(--color-black);
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.03em;
+    text-decoration: none;
+    text-align: center;
+  }
+
+  .whatsapp-cta:hover {
+    background: var(--color-whatsapp-dark);
+  }
+</style>

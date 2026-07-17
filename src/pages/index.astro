@@ -1,13 +1,54 @@
 ---
-
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <title>Flora Pastel</title>
-  </head>
-  <body>
-    <p>Sitio en construcción.</p>
-  </body>
-</html>
+<BaseLayout
+  title="Flora Pastel — Pastelería artesanal en Guadalajara"
+  description="Pastelería artesanal en Guadalajara especializada en cheesecakes, pasteles, postres y gelatinas para celebrar los momentos importantes."
+>
+  <section class="landing">
+    <h1>Flora Pastel</h1>
+    <p class="landing__tagline">
+      Pastelería artesanal en Guadalajara especializada en cheesecakes,
+      pasteles, postres y gelatinas para celebrar los momentos importantes.
+    </p>
+    <a class="btn-primary" href="/catalogo">Ver catálogo</a>
+  </section>
+</BaseLayout>
+
+<style>
+  .landing {
+    padding: var(--space-9) 0;
+    text-align: center;
+  }
+
+  .landing__tagline {
+    max-width: 480px;
+    margin: 0 auto var(--space-6);
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 12.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 15px 26px;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    background: var(--color-coffee);
+    color: #fbf6ee;
+    transition:
+      transform 240ms var(--ease-premium),
+      box-shadow 240ms var(--ease-premium),
+      background 240ms var(--ease-premium);
+  }
+
+  .btn-primary:hover {
+    background: var(--color-coffee-2);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+</style>
