@@ -1,0 +1,27 @@
+---
+import { business } from "../../content/business";
+import WhatsAppCta from "../shared/WhatsAppCta.astro";
+---
+
+<section class="hero">
+  <h1>{business.name}</h1>
+  <p class="hero__tagline">{business.tagline}</p>
+  <WhatsAppCta
+    message="Hola, me gustaría más información."
+    label="Contáctanos por WhatsApp"
+    fullWidth={false}
+  />
+</section>
+
+<style>
+  .hero {
+    padding: var(--space-8) 0;
+    text-align: center;
+  }
+
+  .hero__tagline {
+    max-width: 520px;
+    margin: 0 auto var(--space-5);
+    font-size: 17px;
+  }
+</style>

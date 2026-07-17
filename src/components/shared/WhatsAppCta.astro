@@ -1,18 +1,40 @@
 ---
-import { buildWhatsAppLink } from "../../utils/whatsapp";
+import {
+  buildWhatsAppLink,
+  buildGeneralWhatsAppLink,
+} from "../../utils/whatsapp";
 
 interface Props {
-  product: { name: string };
+  product?: { name: string };
   presentation?: { label: string };
   isSobrePedido?: boolean;
+  message?: string;
+  label?: string;
+  fullWidth?: boolean;
 }
 
-const { product, presentation, isSobrePedido = false } = Astro.props;
-const href = buildWhatsAppLink(product, presentation, isSobrePedido);
+const {
+  product,
+  presentation,
+  isSobrePedido = false,
+  message,
+  label = "Preguntar por WhatsApp",
+  fullWidth = true,
+} = Astro.props;
+
+const href = message
+  ? buildGeneralWhatsAppLink(message)
+  : buildWhatsAppLink(product as { name: string }, presentation, isSobrePedido);
 ---
 
-<a class="whatsapp-cta" href={href} target="_blank" rel="noopener noreferrer">
-  Preguntar por WhatsApp
+<a
+  class="whatsapp-cta"
+  class:list={{ "whatsapp-cta--auto": !fullWidth }}
+  href={href}
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  {label}
 </a>
 
 <style>
@@ -33,6 +55,13 @@ const href = buildWhatsAppLink(product, presentation, isSobrePedido);
     letter-spacing: 0.03em;
     text-decoration: none;
     text-align: center;
+  }
+
+  .whatsapp-cta--auto {
+    width: auto;
+    margin-top: 0;
+    padding: var(--space-3) var(--space-5);
+    font-size: 13px;
   }
 
   .whatsapp-cta:hover {

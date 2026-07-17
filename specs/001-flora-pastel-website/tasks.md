@@ -60,14 +60,14 @@ Single static Astro project at the repository root (unchanged from spec 002): `s
 
 ### Tests for User Story 1
 
-- [ ] T010 [P] [US1] Write the E2E test for the Home hero, WhatsApp CTA, and offerings links in `tests/e2e/home.spec.ts`, per `quickstart.md`'s US1 walkthrough — must fail before implementation
+- [x] T010 [P] [US1] Write the E2E test for the Home hero, WhatsApp CTA, and offerings links in `tests/e2e/home.spec.ts`, per `quickstart.md`'s US1 walkthrough — must fail before implementation
 
 ### Implementation for User Story 1
 
-- [ ] T011 [P] [US1] Create `Hero.astro` (hero section + primary WhatsApp CTA) in `src/components/home/Hero.astro` — FR-004 (depends on T003)
-- [ ] T012 [P] [US1] Create `BrandStory.astro` (brand story / value proposition) in `src/components/home/BrandStory.astro` — FR-006 (depends on T003)
-- [ ] T013 [P] [US1] Create `OfferingsIntro.astro` (introduces and links to `/catalogo` and `/pasteles-personalizados`) in `src/components/home/OfferingsIntro.astro` — FR-005
-- [ ] T014 [US1] Rebuild `src/pages/index.astro` as the real Home page, composing `Hero`, `BrandStory`, and `OfferingsIntro` through `BaseLayout` (replacing the current ad-hoc catalog-link placeholder) — FR-004, FR-005, FR-006 (depends on T009, T011, T012, T013)
+- [x] T011 [P] [US1] Create `Hero.astro` (hero section + primary WhatsApp CTA) in `src/components/home/Hero.astro` — FR-004 (depends on T003) — extended the shared `WhatsAppCta.astro` with an optional `message`/`label`/`fullWidth` mode instead of duplicating its button styling
+- [x] T012 [P] [US1] Create `BrandStory.astro` (brand story / value proposition) in `src/components/home/BrandStory.astro` — FR-006 (depends on T003)
+- [x] T013 [P] [US1] Create `OfferingsIntro.astro` (introduces and links to `/catalogo` and `/pasteles-personalizados`) in `src/components/home/OfferingsIntro.astro` — FR-005
+- [x] T014 [US1] Rebuild `src/pages/index.astro` as the real Home page, composing `Hero`, `BrandStory`, and `OfferingsIntro` through `BaseLayout` (replacing the current ad-hoc catalog-link placeholder) — FR-004, FR-005, FR-006 (depends on T009, T011, T012, T013)
 
 **Checkpoint**: User Story 1 is fully functional and testable independently — the Home page communicates the brand and drives visitors to WhatsApp or into the rest of the site.
 
