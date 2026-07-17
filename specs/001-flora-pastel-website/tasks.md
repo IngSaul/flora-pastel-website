@@ -81,15 +81,15 @@ Single static Astro project at the repository root (unchanged from spec 002): `s
 
 ### Tests for User Story 2
 
-- [ ] T015 [P] [US2] Write the E2E test for the gallery and its WhatsApp CTA in `tests/e2e/custom-cakes.spec.ts`, per `quickstart.md`'s US2 walkthrough — must fail before implementation
+- [x] T015 [P] [US2] Write the E2E test for the gallery and its WhatsApp CTA in `tests/e2e/custom-cakes.spec.ts`, per `quickstart.md`'s US2 walkthrough — must fail before implementation
 
 ### Implementation for User Story 2
 
-- [ ] T016 [P] [US2] Add a Custom-Cakes-context message template to `src/utils/whatsapp.ts` (extends the existing `buildWhatsAppLink` pattern from spec 002) — FR-009, FR-012
-- [ ] T017 [P] [US2] Create `GalleryItem.astro` (photo, title, description, tags, WhatsApp CTA) in `src/components/gallery/GalleryItem.astro` — FR-008, FR-009 (depends on T016)
-- [ ] T018 [US2] Create `GalleryGrid.astro` (renders every `customCakes` entry via `GalleryItem`) in `src/components/gallery/GalleryGrid.astro` — FR-008 (depends on T017)
-- [ ] T019 [P] [US2] Author initial Custom Cake gallery entries in `src/content/custom-cakes/` per `contracts/custom-cake-content-schema.md` (depends on T004)
-- [ ] T020 [US2] Create `src/pages/pasteles-personalizados/index.astro`, composing `GalleryGrid` through `BaseLayout` — FR-008, FR-027 (depends on T009, T018, T019)
+- [x] T016 [P] [US2] Add a Custom-Cakes-context message template to `src/utils/whatsapp.ts` (extends the existing `buildWhatsAppLink` pattern from spec 002) — FR-009, FR-012
+- [x] T017 [P] [US2] Create `GalleryItem.astro` (photo, title, description, tags, WhatsApp CTA) in `src/components/gallery/GalleryItem.astro` — FR-008, FR-009 (depends on T016)
+- [x] T018 [US2] Create `GalleryGrid.astro` (renders every `customCakes` entry via `GalleryItem`) in `src/components/gallery/GalleryGrid.astro` — FR-008 (depends on T017) — also handles the zero-entries state gracefully
+- [x] T019 [P] [US2] Author initial Custom Cake gallery entries in `src/content/custom-cakes/` per `contracts/custom-cake-content-schema.md` (depends on T004) — 3 entries, clearly marked as placeholders (title, description, and a "placeholder" tag) reusing existing catalog photography, since real past-work photography is business-supplied and not yet available (per user decision)
+- [x] T020 [US2] Create `src/pages/pasteles-personalizados/index.astro`, composing `GalleryGrid` through `BaseLayout` — FR-008, FR-027 (depends on T009, T018, T019)
 
 **Checkpoint**: User Stories 1 AND 2 both work independently — the site communicates the brand and lets visitors browse and request custom work.
 

@@ -1,0 +1,87 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
+import WhatsAppCta from "../shared/WhatsAppCta.astro";
+import { buildCustomCakeMessage } from "../../utils/whatsapp";
+
+interface Props {
+  example: CollectionEntry<"customCakes">["data"];
+}
+
+const { example } = Astro.props;
+---
+
+<article class="gallery-item">
+  <div class="gallery-item__photo">
+    <Image
+      class="gallery-item__image"
+      src={example.images[0]}
+      alt={example.title}
+      widths={[400, 800, 1200]}
+      sizes="(min-width: 480px) 300px, 90vw"
+      format="avif"
+      loading="lazy"
+    />
+  </div>
+  <div class="gallery-item__body">
+    <h3 class="gallery-item__title">{example.title}</h3>
+    <p class="gallery-item__description">{example.description}</p>
+    <ul class="gallery-item__tags">
+      {example.tags.map((tag) => <li>{tag}</li>)}
+    </ul>
+    <WhatsAppCta
+      message={buildCustomCakeMessage(example)}
+      label="Solicitar uno similar"
+    />
+  </div>
+</article>
+
+<style>
+  .gallery-item__photo {
+    aspect-ratio: 4 / 5;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: var(--color-pink-soft);
+    box-shadow: var(--shadow-xs);
+  }
+
+  .gallery-item__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .gallery-item__body {
+    padding-top: var(--space-3);
+  }
+
+  .gallery-item__title {
+    font-style: italic;
+    margin-bottom: var(--space-1);
+  }
+
+  .gallery-item__description {
+    font-size: 14px;
+  }
+
+  .gallery-item__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1);
+    list-style: none;
+    margin: 0 0 var(--space-3);
+    padding: 0;
+  }
+
+  .gallery-item__tags li {
+    padding: 2px var(--space-2);
+    border-radius: var(--radius-full);
+    background: var(--color-pink-soft);
+    color: var(--color-pink-deep);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+</style>

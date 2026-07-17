@@ -1,0 +1,38 @@
+---
+import type { CollectionEntry } from "astro:content";
+import GalleryItem from "./GalleryItem.astro";
+
+interface Props {
+  examples: CollectionEntry<"customCakes">[];
+}
+
+const { examples } = Astro.props;
+---
+
+{
+  examples.length > 0 ? (
+    <div class="gallery-grid">
+      {examples.map((example) => (
+        <GalleryItem example={example.data} />
+      ))}
+    </div>
+  ) : (
+    <p class="gallery-grid__empty">
+      Estamos preparando esta galería con ejemplos de trabajos anteriores.
+      Mientras tanto, escríbenos por WhatsApp para platicar sobre tu pastel
+      personalizado.
+    </p>
+  )
+}
+
+<style>
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: var(--space-6);
+  }
+
+  .gallery-grid__empty {
+    max-width: 480px;
+  }
+</style>

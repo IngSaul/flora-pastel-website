@@ -29,3 +29,13 @@ export function buildWhatsAppLink(
 
   return buildGeneralWhatsAppLink(message);
 }
+
+interface WhatsAppCustomCakeExample {
+  title: string;
+}
+
+export function buildCustomCakeMessage(
+  example: WhatsAppCustomCakeExample,
+): string {
+  return `Hola, me interesa un pastel personalizado como "${example.title}" que vi en su galería. Me gustaría platicar sobre mi pedido.`;
+}

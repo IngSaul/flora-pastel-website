@@ -1,0 +1,30 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import GalleryGrid from "../../components/gallery/GalleryGrid.astro";
+
+const examples = await getCollection("customCakes");
+---
+
+<BaseLayout
+  title="Pasteles Personalizados — Flora Pastel"
+  description="Pasteles personalizados para bodas, XV años, cumpleaños y eventos corporativos. Cuéntanos tu idea por WhatsApp."
+>
+  <section class="gallery-intro">
+    <h1>Pasteles Personalizados</h1>
+    <p>
+      Cada pieza se diseña a partir de lo que imaginas para tu celebración.
+      Estos son ejemplos de trabajos anteriores — escríbenos por WhatsApp para
+      platicar sobre tu pedido.
+    </p>
+  </section>
+  <GalleryGrid examples={examples} />
+</BaseLayout>
+
+<style>
+  .gallery-intro {
+    max-width: 640px;
+    margin: 0 auto var(--space-6);
+    text-align: center;
+  }
+</style>
