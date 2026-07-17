@@ -4,7 +4,7 @@ name: Zanahoria
 category: pasteles
 description: Tradicional pastel de zanahoria con nuez y crema de queso Philadelphia.
 images:
-  - zanahoria.avif
+  - ../../assets/products/zanahoria.avif
 presentations:
   - label: Grande
     portionDescription: null

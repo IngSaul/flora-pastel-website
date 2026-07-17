@@ -4,7 +4,7 @@ name: Vainilla
 category: pasteles
 description: Tres capas de bizcocho de vainilla con mermelada de frutos rojos y queso Philadelphia.
 images:
-  - vainilla.avif
+  - ../../assets/products/vainilla.avif
 presentations:
   - label: Grande
     portionDescription: null

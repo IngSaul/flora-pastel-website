@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
 import type { Category } from "../../content/categories";
 import PresentationList from "./PresentationList.astro";
 import SobrePedidoNotice from "./SobrePedidoNotice.astro";
@@ -7,20 +8,23 @@ import SobrePedidoNotice from "./SobrePedidoNotice.astro";
 interface Props {
   product: CollectionEntry<"products">["data"];
   category: Category;
+  priority?: boolean;
 }
 
-const { product, category } = Astro.props;
+const { product, category, priority = false } = Astro.props;
 const isSobrePedido = category.id === "sobre-pedido";
 ---
 
 <article class="product-card">
-  <img
+  <Image
     class="product-card__image"
-    src={`/images/products/${product.images[0]}`}
+    src={product.images[0]}
     alt={product.name}
-    width="1200"
-    height="1500"
-    loading="lazy"
+    widths={[400, 800, 1200]}
+    sizes="100vw"
+    format="avif"
+    loading={priority ? "eager" : "lazy"}
+    fetchpriority={priority ? "high" : "auto"}
   />
   <p class="product-card__category">{category.label}</p>
   <h3 class="product-card__name">{product.name}</h3>

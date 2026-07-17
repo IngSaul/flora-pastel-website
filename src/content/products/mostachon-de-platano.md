@@ -4,7 +4,7 @@ name: Mostachón de Plátano
 category: sobre-pedido
 description: Mostachón con plátano, nuez y cajeta (opcionales).
 images:
-  - mostachon-de-platano.avif
+  - ../../assets/products/mostachon-de-platano.avif
 presentations:
   - label: Grande
     portionDescription: null

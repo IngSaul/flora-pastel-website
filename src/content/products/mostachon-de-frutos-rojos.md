@@ -4,7 +4,7 @@ name: Mostachón de Frutos Rojos
 category: postres
 description: Base de merengue, nuez y galleta con crema suave y abundantes frutos rojos.
 images:
-  - mostachon.avif
+  - ../../assets/products/mostachon.avif
 presentations:
   - label: Grande
     portionDescription: null

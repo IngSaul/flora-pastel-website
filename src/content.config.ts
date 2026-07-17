@@ -18,14 +18,15 @@ const presentation = z.object({
 
 const products = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/products" }),
-  schema: z.object({
-    slug: z.string().min(1),
-    name: z.string().min(1),
-    category: categoryId,
-    description: z.string().min(1),
-    images: z.array(z.string().min(1)).min(1),
-    presentations: z.array(presentation).min(1),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      slug: z.string().min(1),
+      name: z.string().min(1),
+      category: categoryId,
+      description: z.string().min(1),
+      images: z.array(image()).min(1),
+      presentations: z.array(presentation).min(1),
+    }),
 });
 
 export const collections = { products };

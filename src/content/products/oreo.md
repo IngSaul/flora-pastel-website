@@ -4,7 +4,7 @@ name: Oreo
 category: cheesecakes
 description: Hecho con base de galleta Oreo, relleno de cheesecake con queso Philadelphia y brownie. Decorado con crema de chocolate, frutos rojos, galleta Oreo y hoja de chocolate.
 images:
-  - oreo.avif
+  - ../../assets/products/oreo.avif
 presentations:
   - label: Grande
     portionDescription: 12 porciones

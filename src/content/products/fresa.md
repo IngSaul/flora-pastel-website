@@ -4,7 +4,7 @@ name: Fresa
 category: gelatinas
 description: Gelatina de pulpa de fresa con base de crema de leche.
 images:
-  - fresa.avif
+  - ../../assets/products/fresa.avif
 presentations:
   - label: Grande
     portionDescription: 2 litros · 14 porciones

@@ -4,7 +4,7 @@ name: "Hershey's"
 category: pasteles
 description: Tres capas de bizcocho de chocolate semiamargo con relleno y cobertura de crema de chocolate y frutos rojos.
 images:
-  - hersheys.avif
+  - ../../assets/products/hersheys.avif
 presentations:
   - label: Grande
     portionDescription: null

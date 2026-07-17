@@ -4,7 +4,7 @@ name: Cajetoso de Elote
 category: postres
 description: Postre cremoso de queso Philadelphia y elote, cubierto con cajeta artesanal y nuez.
 images:
-  - cajetoso.avif
+  - ../../assets/products/cajetoso.avif
 presentations:
   - label: Grande
     portionDescription: null

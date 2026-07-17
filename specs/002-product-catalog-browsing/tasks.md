@@ -123,12 +123,12 @@ Single static Astro project at the repository root (per `plan.md`): `src/`, `pub
 
 **Purpose**: Verification and quality gates that span all three user stories
 
-- [ ] T029 [P] Add `javaScriptEnabled: false` variants of all three E2E specs, asserting every product's name, description, presentations, prices, and Sobre Pedido notices remain visible — FR-013, per `quickstart.md`'s Resilience Checks
-- [ ] T030 [P] Run `@axe-core/playwright` against the catalog page and fix any WCAG AA violations found
-- [ ] T031 [P] Run Lighthouse (mobile + desktop) against the built catalog page and tune until Performance/Accessibility/Best Practices/SEO are each ≥ 90 — SC-007, Constitution II
-- [ ] T032 Reconcile every entry in `src/content/products/` against `cliente/productos.md` line by line to confirm all ~24 products, their categories, presentations, and prices are present and correct — FR-003
-- [ ] T033 [P] Tune product image delivery (`astro:assets` widths/formats, lazy loading) for mobile performance — FR-012
-- [ ] T034 Run the full `quickstart.md` validation walkthrough end-to-end and record the results
+- [x] T029 [P] Add `javaScriptEnabled: false` variants of all three E2E specs, asserting every product's name, description, presentations, prices, and Sobre Pedido notices remain visible — FR-013, per `quickstart.md`'s Resilience Checks
+- [x] T030 [P] Run `@axe-core/playwright` against the catalog page and fix any WCAG AA violations found — zero serious/critical violations found; added `tests/e2e/accessibility.spec.ts`
+- [x] T031 [P] Run Lighthouse (mobile + desktop) against the built catalog page and tune until Performance/Accessibility/Best Practices/SEO are each ≥ 90 — SC-007, Constitution II — fixed nav/header touch-target sizing and a missing favicon (404); all 4 categories now score ≥ 0.99
+- [x] T032 Reconcile every entry in `src/content/products/` against `cliente/productos.md` line by line to confirm all ~24 products, their categories, presentations, and prices are present and correct — FR-003 — all 24 confirmed, no discrepancies
+- [x] T033 [P] Tune product image delivery (`astro:assets` widths/formats, lazy loading) for mobile performance — FR-012 — migrated images from `public/` to `src/assets/products/` processed via `astro:assets` `<Image>` (responsive AVIF widths 400/800/1200) and eager-load the first/LCP candidate image; LCP dropped from a variable 1.7-4.3s to a stable ~1.6s
+- [x] T034 Run the full `quickstart.md` validation walkthrough end-to-end and record the results — all 19 Playwright tests pass (incl. no-JS variants), axe clean, Lighthouse ≥ 0.99/1/1/1, product data reconciled
 
 ---
 

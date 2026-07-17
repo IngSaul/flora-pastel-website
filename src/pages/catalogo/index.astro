@@ -14,12 +14,13 @@ const allProducts = await getCollection("products");
 >
   <CategoryNav />
   {
-    categories.map((category) => (
+    categories.map((category, index) => (
       <CategorySection
         category={category}
         products={allProducts.filter(
           (product) => product.data.category === category.id,
         )}
+        isFirstSection={index === 0}
       />
     ))
   }

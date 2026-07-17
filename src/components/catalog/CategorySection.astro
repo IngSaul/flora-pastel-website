@@ -7,9 +7,10 @@ import SobrePedidoNotice from "./SobrePedidoNotice.astro";
 interface Props {
   category: Category;
   products: CollectionEntry<"products">[];
+  isFirstSection?: boolean;
 }
 
-const { category, products } = Astro.props;
+const { category, products, isFirstSection = false } = Astro.props;
 ---
 
 <section id={category.id} class="category-section">
@@ -21,8 +22,12 @@ const { category, products } = Astro.props;
   }
   <div class="category-section__grid">
     {
-      products.map((product) => (
-        <ProductCard product={product.data} category={category} />
+      products.map((product, index) => (
+        <ProductCard
+          product={product.data}
+          category={category}
+          priority={isFirstSection && index === 0}
+        />
       ))
     }
   </div>

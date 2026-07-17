@@ -4,7 +4,7 @@ name: Durazno
 category: gelatinas
 description: Gelatina de pulpa de durazno con base de crema de leche.
 images:
-  - durazno.avif
+  - ../../assets/products/durazno.avif
 presentations:
   - label: Grande
     portionDescription: 2 litros · 14 porciones

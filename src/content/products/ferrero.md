@@ -4,7 +4,7 @@ name: Ferrero
 category: pasteles
 description: Tres capas de bizcocho de chocolate con crema de avellana, avellana tostada y chocolates Ferrero.
 images:
-  - ferrero.avif
+  - ../../assets/products/ferrero.avif
 presentations:
   - label: Grande
     portionDescription: null

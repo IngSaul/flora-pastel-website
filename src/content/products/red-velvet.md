@@ -4,7 +4,7 @@ name: Red Velvet
 category: pasteles
 description: Tres capas de bizcocho red velvet con relleno de crema de queso Philadelphia.
 images:
-  - red-velvet.avif
+  - ../../assets/products/red-velvet.avif
 presentations:
   - label: Grande
     portionDescription: null

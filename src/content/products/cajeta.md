@@ -4,7 +4,7 @@ name: Cajeta
 category: cheesecakes
 description: Base de galleta María, cheesecake natural relleno de dulce de leche, decorado con crema marmoleada con cajeta y obleas.
 images:
-  - cajeta.avif
+  - ../../assets/products/cajeta.avif
 presentations:
   - label: Grande
     portionDescription: 12 porciones
