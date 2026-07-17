@@ -11,6 +11,7 @@ export interface BusinessProfile {
     state: string;
     country: string;
   };
+  fullAddress: string;
   hours: { days: string; time: string }[];
   mapsEmbedUrl: string;
   mapsDirectionsUrl: string;
@@ -44,6 +45,7 @@ export const business: BusinessProfile = {
   whatsappNumber: "523319027014",
   phone: "33 1902 7014",
   address,
+  fullAddress: `${address.street}, ${address.neighborhood}, ${address.city}, ${address.state}, ${address.country}`,
   hours: [
     { days: "Lunes a sábado", time: "9:00 a.m. – 8:30 p.m." },
     { days: "Domingos y días festivos", time: "10:00 a.m. – 6:00 p.m." },

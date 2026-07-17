@@ -18,6 +18,7 @@ export interface BusinessProfile {
     state: string;
     country: string;
   };
+  fullAddress: string; // derived once from `address`, so every consumer renders identical text
   hours: { days: string; time: string }[];
   mapsEmbedUrl: string;
   mapsDirectionsUrl: string;

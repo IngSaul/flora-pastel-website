@@ -103,14 +103,14 @@ Single static Astro project at the repository root (unchanged from spec 002): `s
 
 ### Tests for User Story 3
 
-- [ ] T021 [P] [US3] Write the E2E test for Contact info, map, and social links in `tests/e2e/contact.spec.ts`, per `quickstart.md`'s US3 walkthrough — must fail before implementation
+- [x] T021 [P] [US3] Write the E2E test for Contact info, map, and social links in `tests/e2e/contact.spec.ts`, per `quickstart.md`'s US3 walkthrough — must fail before implementation
 
 ### Implementation for User Story 3
 
-- [ ] T022 [P] [US3] Create `BusinessInfo.astro` (address, phone, hours) in `src/components/contact/BusinessInfo.astro` — FR-013 (depends on T003)
-- [ ] T023 [P] [US3] Create `MapEmbed.astro` (Google Maps iframe with an always-visible text address + directions fallback link, per `research.md`'s Maps decision) in `src/components/contact/MapEmbed.astro` — FR-014 (depends on T003)
-- [ ] T024 [P] [US3] Create `SocialLinks.astro` in `src/components/contact/SocialLinks.astro` — FR-015 (depends on T003)
-- [ ] T025 [US3] Create `src/pages/contacto/index.astro`, composing `BusinessInfo`, `MapEmbed`, and `SocialLinks` through `BaseLayout` — FR-013, FR-014, FR-015 (depends on T009, T022, T023, T024)
+- [x] T022 [P] [US3] Create `BusinessInfo.astro` (address, phone, hours) in `src/components/contact/BusinessInfo.astro` — FR-013 (depends on T003)
+- [x] T023 [P] [US3] Create `MapEmbed.astro` (Google Maps iframe with an always-visible text address + directions fallback link, per `research.md`'s Maps decision) in `src/components/contact/MapEmbed.astro` — FR-014 (depends on T003)
+- [x] T024 [P] [US3] Create `SocialLinks.astro` in `src/components/contact/SocialLinks.astro` — FR-015 (depends on T003)
+- [x] T025 [US3] Create `src/pages/contacto/index.astro`, composing `BusinessInfo`, `MapEmbed`, and `SocialLinks` through `BaseLayout` — FR-013, FR-014, FR-015 (depends on T009, T022, T023, T024) — added a `business.fullAddress` derived field so `BusinessInfo` and `MapEmbed` render identical address text instead of each re-joining the address parts
 
 **Checkpoint**: All three user stories are independently functional — the site communicates the brand, showcases custom work, and provides trustworthy contact/location information.
 
