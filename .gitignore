@@ -72,6 +72,18 @@ web_modules/
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
+
+# Astro build output
+.astro
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+
+# Lighthouse CI
+.lighthouseci
 .parcel-cache
 
 # Next.js build output

@@ -1,0 +1,9 @@
+dist
+node_modules
+.astro
+specs
+cliente
+references
+.claude
+.specify
+README.md

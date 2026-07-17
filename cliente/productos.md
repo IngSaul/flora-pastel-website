@@ -316,33 +316,6 @@ presentaciones:
 
 ## Sobre Pedido (3 días)
 
-### Tarta de Frutos Rojos
-
-slug: tarta-de-frutos-rojos
-image: tarta-de-frutos-rojos.jpg
-categoria: Sobre Pedido
-
-descripcion: Base de pasta quebrada con crema sabor vainilla y frutos rojos.
-
-presentaciones:
-- Grande · $590
-- Individual · $75
-
----
-
-### Pay de Limón
-
-slug: pay-de-limon
-image: pay-de-limon.jpg
-categoria: Sobre Pedido
-
-descripcion: Base de galleta María con crema de limón y frutos rojos.
-
-presentaciones:
-- Grande · $590
-
----
-
 ### Rosca de Nuez Sin Azúcar
 
 slug: rosca-de-nuez-sin-azucar
@@ -356,19 +329,6 @@ presentaciones:
 
 ---
 
-### Strudel de Manzana
-
-slug: strudel-de-manzana
-image: strudel-de-manzana.jpg
-categoria: Sobre Pedido
-
-descripcion: Tradicional hojaldre trenzado relleno de manzana cocida.
-
-presentaciones:
-- Grande · $270
-
----
-
 ### Mostachón de Plátano
 
 slug: mostachon-de-platano
@@ -376,20 +336,6 @@ image: mostachon-de-platano.jpg
 categoria: Sobre Pedido
 
 descripcion: Mostachón con plátano, nuez y cajeta (opcionales).
-
-presentaciones:
-- Grande · $540
-- Mediano · $340
-
----
-
-### Mostachón de Mango
-
-slug: mostachon-de-mango
-image: mostachon-de-mango.jpg
-categoria: Sobre Pedido
-
-descripcion: Mostachón con crema suave y mango fresco.
 
 presentaciones:
 - Grande · $540

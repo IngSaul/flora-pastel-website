@@ -1,0 +1,46 @@
+/* Design tokens ported from references/design-proposal.html — keep in sync with that source. */
+
+:root {
+  --color-pink: #d6478a;
+  --color-pink-deep: #ad2f68;
+  --color-pink-soft: #f8e1ec;
+  --color-coffee: #8b5a3c;
+  --color-coffee-2: #6e4429;
+  --color-cream: #fbf6ee;
+  --color-white: #ffffff;
+  --color-black: #17140f;
+  --color-ink: #8b5a3c;
+  --color-ink-muted: #7c6a5c;
+  --color-ink-faint: #b3a392;
+  --color-border: #ece0e7;
+  --color-whatsapp: #25d366;
+  --color-whatsapp-dark: #1da851;
+
+  --font-word: "Fjalla One", sans-serif;
+  --font-display: "Fraunces", serif;
+  --font-body: "Manrope", sans-serif;
+
+  --radius-xs: 3px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 24px;
+  --radius-full: 999px;
+
+  --shadow-xs: 0 1px 2px rgba(23, 20, 15, 0.06);
+  --shadow-sm: 0 3px 12px rgba(23, 20, 15, 0.08);
+  --shadow-md: 0 10px 28px rgba(23, 20, 15, 0.11);
+  --shadow-lg: 0 24px 56px rgba(23, 20, 15, 0.18);
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+
+  --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
+}
