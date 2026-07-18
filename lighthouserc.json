@@ -2,7 +2,12 @@
   "ci": {
     "collect": {
       "staticDistDir": "./dist",
-      "url": ["http://localhost/catalogo/index.html"]
+      "url": [
+        "http://localhost/index.html",
+        "http://localhost/catalogo/index.html",
+        "http://localhost/pasteles-personalizados/index.html",
+        "http://localhost/contacto/index.html"
+      ]
     },
     "assert": {
       "assertions": {

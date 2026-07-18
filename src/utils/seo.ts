@@ -32,12 +32,13 @@ export function buildLocalBusinessJsonLd(siteUrl: string) {
       streetAddress: business.address.street,
       addressLocality: business.address.city,
       addressRegion: business.address.state,
-      addressCountry: business.address.country,
+      addressCountry: business.address.countryCode,
     },
     openingHoursSpecification: business.hours.map((entry) => ({
       "@type": "OpeningHoursSpecification",
       dayOfWeek: DAY_NAME_MAP[entry.days] ?? [],
-      description: entry.time,
+      opens: entry.opens,
+      closes: entry.closes,
     })),
     sameAs: [
       business.social.facebook,

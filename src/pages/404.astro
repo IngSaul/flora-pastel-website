@@ -1,0 +1,67 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Página no encontrada — Flora Pastel"
+  description="La página que buscas no existe. Vuelve al inicio o contáctanos por WhatsApp."
+>
+  <section class="not-found">
+    <h1>404</h1>
+    <p>No encontramos la página que buscas.</p>
+    <div class="not-found__actions">
+      <a class="btn-primary" href="/">Volver al inicio</a>
+      <a class="not-found__contact" href="/contacto">Ir a Contacto</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .not-found {
+    padding: var(--space-9) 0;
+    text-align: center;
+  }
+
+  .not-found__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-4);
+    margin-top: var(--space-5);
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 12.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 15px 26px;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    background: var(--color-coffee);
+    color: #fbf6ee;
+    transition:
+      transform 240ms var(--ease-premium),
+      box-shadow 240ms var(--ease-premium),
+      background 240ms var(--ease-premium);
+  }
+
+  .btn-primary:hover {
+    background: var(--color-coffee-2);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .not-found__contact {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-pink-deep);
+    border-bottom: 1px solid currentColor;
+    text-decoration: none;
+    padding-bottom: 2px;
+  }
+</style>

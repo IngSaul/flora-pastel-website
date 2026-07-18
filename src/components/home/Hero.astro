@@ -1,16 +1,31 @@
 ---
+import { Image } from "astro:assets";
 import { business } from "../../content/business";
 import WhatsAppCta from "../shared/WhatsAppCta.astro";
+import heroImage from "../../assets/products/frutos-rojos.avif";
 ---
 
 <section class="hero">
-  <h1>{business.name}</h1>
-  <p class="hero__tagline">{business.tagline}</p>
-  <WhatsAppCta
-    message="Hola, me gustaría más información."
-    label="Contáctanos por WhatsApp"
-    fullWidth={false}
-  />
+  <div class="hero__content">
+    <h1>{business.name}</h1>
+    <p class="hero__tagline">{business.tagline}</p>
+    <WhatsAppCta
+      message="Hola, me gustaría más información."
+      label="Contáctanos por WhatsApp"
+      fullWidth={false}
+    />
+  </div>
+  <div class="hero__photo">
+    <Image
+      src={heroImage}
+      alt="Cheesecake de frutos rojos de Flora Pastel"
+      widths={[400, 800, 1200]}
+      sizes="(min-width: 768px) 480px, 90vw"
+      format="avif"
+      loading="eager"
+      fetchpriority="high"
+    />
+  </div>
 </section>
 
 <style>
@@ -23,5 +38,43 @@ import WhatsAppCta from "../shared/WhatsAppCta.astro";
     max-width: 520px;
     margin: 0 auto var(--space-5);
     font-size: 17px;
+  }
+
+  .hero__photo {
+    margin: var(--space-6) auto 0;
+    max-width: 480px;
+    aspect-ratio: 4 / 3;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-xs);
+  }
+
+  .hero__photo :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  @media (min-width: 768px) {
+    .hero {
+      display: flex;
+      align-items: center;
+      gap: var(--space-8);
+      text-align: left;
+    }
+
+    .hero__content {
+      flex: 1;
+    }
+
+    .hero__tagline {
+      margin: 0 0 var(--space-5);
+    }
+
+    .hero__photo {
+      flex: 1;
+      margin-top: 0;
+    }
   }
 </style>

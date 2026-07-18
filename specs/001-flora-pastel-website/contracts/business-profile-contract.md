@@ -17,9 +17,10 @@ export interface BusinessProfile {
     city: string;
     state: string;
     country: string;
+    countryCode: string; // ISO 3166-1 alpha-2, e.g. "MX" — for schema.org addressCountry
   };
   fullAddress: string; // derived once from `address`, so every consumer renders identical text
-  hours: { days: string; time: string }[];
+  hours: { days: string; time: string; opens: string; closes: string }[]; // opens/closes are 24h "HH:MM", for schema.org OpeningHoursSpecification
   mapsEmbedUrl: string;
   mapsDirectionsUrl: string;
   social: {

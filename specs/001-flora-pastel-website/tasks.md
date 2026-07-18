@@ -120,16 +120,16 @@ Single static Astro project at the repository root (unchanged from spec 002): `s
 
 **Purpose**: Verification and quality gates that span all three user stories and the site-wide chrome
 
-- [ ] T026 [P] Create the custom 404 page in `src/pages/404.astro` (link back to Home and a WhatsApp/contact path) — FR-021
-- [ ] T027 [P] Write the E2E test confirming `SiteNav`/`SiteFooter` render identically on `/`, `/catalogo`, `/pasteles-personalizados`, and `/contacto` in `tests/e2e/site-chrome.spec.ts` — FR-001, FR-002, FR-003
-- [ ] T028 [P] Write the E2E test for the 404 page in `tests/e2e/not-found.spec.ts` — FR-021
-- [ ] T029 [P] Add `javaScriptEnabled: false` variants to `home.spec.ts`, `custom-cakes.spec.ts`, `contact.spec.ts`, and `site-chrome.spec.ts`, asserting all business-critical content remains visible — FR-024
-- [ ] T030 [P] Run `@axe-core/playwright` against `/`, `/pasteles-personalizados`, and `/contacto` and fix any WCAG AA violations found
-- [ ] T031 [P] Run Lighthouse (mobile + desktop) against `/`, `/catalogo`, `/pasteles-personalizados`, and `/contacto`, and tune until Performance/Accessibility/Best Practices/SEO are each ≥ 90 — SC-002, SC-003
-- [ ] T032 Reconcile `src/content/business.ts` against `cliente/datos.md` line by line — FR-013, FR-015
-- [ ] T033 [P] Verify `sitemap-index.xml` lists all four pages and `robots.txt` references it — FR-019, FR-020
-- [ ] T034 [P] Validate the `LocalBusiness` JSON-LD on each page against schema.org — FR-018
-- [ ] T035 Run the full `quickstart.md` validation walkthrough end-to-end and record the results
+- [x] T026 [P] Create the custom 404 page in `src/pages/404.astro` (link back to Home and a WhatsApp/contact path) — FR-021
+- [x] T027 [P] Write the E2E test confirming `SiteNav`/`SiteFooter` render identically on `/`, `/catalogo`, `/pasteles-personalizados`, and `/contacto` in `tests/e2e/site-chrome.spec.ts` — FR-001, FR-002, FR-003
+- [x] T028 [P] Write the E2E test for the 404 page in `tests/e2e/not-found.spec.ts` — FR-021
+- [x] T029 [P] Add `javaScriptEnabled: false` variants to `home.spec.ts`, `custom-cakes.spec.ts`, `contact.spec.ts`, and `site-chrome.spec.ts`, asserting all business-critical content remains visible — FR-024
+- [x] T030 [P] Run `@axe-core/playwright` against `/`, `/pasteles-personalizados`, and `/contacto` and fix any WCAG AA violations found — extended `accessibility.spec.ts` to loop over all 4 pages; fixed a heading-order violation on `/pasteles-personalizados` (h1 → h3 with no h2) via a screen-reader-only h2
+- [x] T031 [P] Run Lighthouse (mobile + desktop) against `/`, `/catalogo`, `/pasteles-personalizados`, and `/contacto`, and tune until Performance/Accessibility/Best Practices/SEO are each ≥ 90 — SC-002, SC-003 — all 4 pages ≥ 0.98/1/1/1; the one non-1.0 score (0.98 performance on `/pasteles-personalizados`) is a CLS of 0.085, already within Core Web Vitals' "good" range
+- [x] T032 Reconcile `src/content/business.ts` against `cliente/datos.md` line by line — FR-013, FR-015 — all fields confirmed (name, phone, WhatsApp, address, hours, maps query, social links); no discrepancies
+- [x] T033 [P] Verify `sitemap-index.xml` lists all four pages and `robots.txt` references it — FR-019, FR-020 — confirmed; the 404 page is correctly excluded
+- [x] T034 [P] Validate the `LocalBusiness` JSON-LD on each page against schema.org — FR-018 — fixed two structured-data issues found during manual review against Google's guidelines: `addressCountry` now uses the ISO 3166-1 alpha-2 code ("MX") instead of the full country name, and `openingHoursSpecification` now uses proper `opens`/`closes` 24h time values instead of a free-text `description`
+- [x] T035 Run the full `quickstart.md` validation walkthrough end-to-end and record the results — 51/51 Playwright tests pass (incl. no-JS variants), axe clean on all 4 pages, Lighthouse ≥ 0.98 on all 4 pages, business data reconciled, sitemap/robots verified, structured data corrected
 
 ---
 

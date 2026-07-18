@@ -10,9 +10,10 @@ export interface BusinessProfile {
     city: string;
     state: string;
     country: string;
+    countryCode: string;
   };
   fullAddress: string;
-  hours: { days: string; time: string }[];
+  hours: { days: string; time: string; opens: string; closes: string }[];
   mapsEmbedUrl: string;
   mapsDirectionsUrl: string;
   social: {
@@ -28,6 +29,7 @@ const address = {
   city: "Guadalajara",
   state: "Jalisco",
   country: "México",
+  countryCode: "MX",
 };
 
 const mapsQuery =
@@ -47,8 +49,18 @@ export const business: BusinessProfile = {
   address,
   fullAddress: `${address.street}, ${address.neighborhood}, ${address.city}, ${address.state}, ${address.country}`,
   hours: [
-    { days: "Lunes a sábado", time: "9:00 a.m. – 8:30 p.m." },
-    { days: "Domingos y días festivos", time: "10:00 a.m. – 6:00 p.m." },
+    {
+      days: "Lunes a sábado",
+      time: "9:00 a.m. – 8:30 p.m.",
+      opens: "09:00",
+      closes: "20:30",
+    },
+    {
+      days: "Domingos y días festivos",
+      time: "10:00 a.m. – 6:00 p.m.",
+      opens: "10:00",
+      closes: "18:00",
+    },
   ],
   mapsEmbedUrl: `https://www.google.com/maps?q=${encodeURIComponent(mapsQuery)}&output=embed`,
   mapsDirectionsUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapsQuery)}`,
